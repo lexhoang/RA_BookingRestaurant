@@ -1,0 +1,55 @@
+/* CARD PRODUCT */
+.card-product {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-product-img-top {
+    transition: calc(1.5s);
+}
+
+.card-product:hover .card-img-top {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.card-product_body {
+    background-color: #fff;
+    z-index: 2;
+}
+
+.card-name {
+    color: #c59d5f;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: "Palatino Linotype', 'Book Antiqua', Palatino, serif";
+}
+
+.card-detail {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: orangered;
+    width: 100%;
+    height: 50px;
+    z-index: 1;
+    transition: calc(0.5s);
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.card-product:hover .card-detail {
+    bottom: 40px;
+}
+
+/* CARD BOOKING */
+.cardOrder label {
+    display: inline-block;
+    min-width: 130px;
+}
+
+.cardOrder span {
+    font-size: 18px;
+    font-weight: bold;
+}

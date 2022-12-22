@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-item a {
+    margin: 0 40px;
+    font-size: 18px;
+}
+
+.nav-item a:hover {
+    border-bottom: 2px solid orangered;
+}
+
+.optical {
+    position: relative;
+}
+
+.text-optical {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0%;
+    transform: translateY(-100%);
+    margin: 0 40px;
+}
+
+.text-about {
+    text-align: justify;
+    font-family: "Palatino Linotype', 'Book Antiqua', Palatino, serif";
+}
+
+.text-about h2 {
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 60px;
+    color: #c59d5f
+}
+
+.imgUp {
+    position: relative;
+    margin: 150px auto 20px;
+}
+
+.imgUp::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROWe2lkP6N4vFJ0-h18sFo5bM15U-PLThSMg&usqp=CAU') top left repeat-x;
+    background-size: 10px 10px;
+    width: 100%;
+    height: 10px;
+    display: block;
+}
+
+.imgUp::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROWe2lkP6N4vFJ0-h18sFo5bM15U-PLThSMg&usqp=CAU') top left repeat-x;
+    background-size: 10px 10px;
+    width: 100%;
+    height: 10px;
+    display: block;
+}
+
+.text-up {
+    position: absolute;
+    text-align: center;
+    font-family: "Palatino Linotype', 'Book Antiqua', Palatino, serif";
+    top: 20%;
+    left: 30%;
+    right: 30%;
+}
+
+.text-up h2 {
+    color: #c59d5f;
+    font-weight: bold;
+    font-size: 80px;
+}
+
+.text-up h3 {
+    color: #fff;
+    letter-spacing: 5px;
+    font-weight: bold;
+    font-size: 30px
+}
+
+footer .btn-floating {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+footer .btn-floating i {
+    line-height: 35px;
+}

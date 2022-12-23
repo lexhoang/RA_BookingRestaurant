@@ -4,7 +4,7 @@ var getListBooking = JSON.parse(localStorage.getItem("listBooking"));
 function renderOrder(getListBooking) {
     let listUserLogin = JSON.parse(localStorage.getItem("userLogin"))
     let renderOrder = "";
-    if (listUserLogin !== null) {
+    if (listUserLogin != null) {
         for (let i = 0; i < listUserLogin.length; i++) {
             for (let j = 0; j < getListBooking.length; j++) {
                 if (listUserLogin[i].email == getListBooking[j].email) {
@@ -27,7 +27,7 @@ function renderOrder(getListBooking) {
                                         <hr>
                                         <label>Giờ đặt bàn:</label> <span>${getListBooking[j].time} giờ - ${getListBooking[j].minutes} phút</span>
                                         <hr>
-                                        <label>Số lượng người:</label> <span>${getListBooking[j].people}</span>
+                                        <label>Số lượng người:</label> <span>${getListBooking[j].people} người</span>
                                         <hr>
                                     </div>
                                 </div>
@@ -47,8 +47,6 @@ function renderOrder(getListBooking) {
                         </div>
                     `
                     document.getElementById("bookingOrder").innerHTML = renderOrder;
-                } else {
-                    document.getElementById("bookingOrder").innerHTML = "";
                 }
             }
         }
@@ -77,7 +75,10 @@ function deleteBooking(paramId) {
                         renderOrder(getListBooking);
                     }
                 }
-                swal("Bạn đã hủy bàn thành công!", "", "success");
+                swal("Bạn đã hủy bàn thành công!", "", "success")
+                    .then(() => {
+                        window.location.reload();
+                    })
             } else {
                 swal("Bàn của bạn vẫn còn, hãy qua nhà hàng sớm nha!");
             }

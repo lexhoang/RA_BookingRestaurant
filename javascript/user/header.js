@@ -84,7 +84,9 @@ function renderLogin() {
                 <ul class="dropdown-menu">
                     <li><p class="dropdown-item">${user[user.length - 1].email}</p></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><button class="dropdown-item">Cài Đặt</button></li>
+                    <li class="dropdown-item">
+                        <a href="changePassword.html">Đổi mật khẩu</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item">

@@ -43,7 +43,8 @@ function renderProduct() {
                         <p class="card-text card-name">${getListProduct[i].name}</p>
                     </div>
                     <div class="card-detail text-center p-1" data-bs-toggle="modal" data-bs-target="#exampleModal-${getListProduct[i].id}"
-                            onclick="detailProduct()">CHI TIẾT</div>
+                            onclick="detailProduct()">CHI TIẾT
+                    </div>
                 </div>
             </div>
 

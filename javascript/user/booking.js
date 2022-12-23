@@ -36,10 +36,12 @@ function bookingClick() {
                 getListBooking.push(objectBooking);
                 localStorage.setItem("listBooking", JSON.stringify(getListBooking));
                 swal("Bạn đặt bàn thành công", "Chúc bạn có một ngày tốt lành!", "success");
+                resetForm();
             } else {
                 getListBooking.push(objectBooking);
                 localStorage.setItem("listBooking", JSON.stringify(getListBooking));
                 swal("Bạn đặt bàn thành công", "Chúc bạn có một ngày tốt lành!", "success");
+                resetForm();
             }
         }
     } else {
@@ -76,3 +78,15 @@ function renderDate() {
     valueInputDate.setAttribute("min", date)
 }
 renderDate();
+
+
+function resetForm() {
+    inpFullName.value = "";
+    inpEmail.value = "";
+    inpPhone.value = "";
+    inpDate.value = "";
+    selectTime.value = "";
+    selectMinutes.value = "";
+    inpPeople.value = "";
+    inpNote.value = "";
+}

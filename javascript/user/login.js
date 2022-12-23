@@ -7,7 +7,7 @@ function onloadForm() {
                     <a href="registerForm.html" class="btn btn-dark">SIGN UP</a>
                     <a href="loginForm.html" class="btn btn-danger">LOGIN</a>
                 </div>
-                <h3 class="text-center text-light mt-5">FORM REGISTER</h3>
+                <h3 class="text-center text-light mt-5">FORM LOGIN</h3>
                 <hr>
                 <div class="form-group">
                     <label for="email"><b>Email</b></label>
@@ -133,14 +133,17 @@ function checkForm() {
 }
 
 //       KIỂM TRA XEM TÀI KHOẢN ĐÃ ĐƯƠC ĐĂNG KÝ CHƯA
-function checkLocalStorage() {
+function checkForm() {
     let getUserRegister = localStorage.getItem("listUserRegister");
     let listUserRegister = JSON.parse(getUserRegister)
     for (const index in listUserRegister) {
         console.log(listUserRegister[index]);
         if (listUserRegister[index].email == inpEmail.value && listUserRegister[index].password == inpPassword.value
             && listUserRegister[index].status == "availability") {
+            console.log("Tài khoản hợp lệ");
             return true;
+        } else {
+            console.log("Tài khoản không hợp lệ");
         }
     }
 }

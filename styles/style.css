@@ -8,8 +8,13 @@ a {
     text-decoration: none;
 }
 
+.nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .nav-item a {
-    margin: 0 40px;
+    margin: 0 30px;
     font-size: 18px;
 }
 

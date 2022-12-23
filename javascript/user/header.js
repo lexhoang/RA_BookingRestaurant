@@ -30,9 +30,13 @@ function renderHeader() {
                         </button>
                         <div class="col-9">
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-menu">
                                     <li class="nav-item">
                                         <a class="nav-link active" aria-current="page" href="index.html">Trang chủ</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="concept.html">Concept</a>
                                     </li>
 
                                     <li class="nav-item">
@@ -56,51 +60,78 @@ function renderHeader() {
                 </nav>
             </div>
         `
-
     document.getElementById("header").innerHTML = header;
 }
 renderHeader();
 
+
 function renderLogin() {
-    let change = document.getElementById("login")
-    let getUser = localStorage.getItem("userLogin");
+    let getUser = JSON.parse(localStorage.getItem("userLogin"));
+    let renderUser = "";
     if (getUser == null) {
-        let renderUser = `
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active btn btn-css" href="loginForm.html">LOGIN</a>
-            </li>
-        </ul>
+        renderUser = `
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-css" href="loginForm.html">LOGIN</a>
+                </li>
+            </ul>
         `
-        change.innerHTML = renderUser;
+        document.getElementById("login").innerHTML = renderUser;
     } else {
-        let user = JSON.parse(getUser);
-        let renderUser = `
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px;">User</span></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><p class="dropdown-item">${user[user.length - 1].email}</p></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li class="dropdown-item">
-                        <a href="changePassword.html">Đổi mật khẩu</a>
+        for (let i = 0; i < getUser.length; i++) {
+            if (getUser[i].email == "lehoang999113@gmail.com") {
+                renderUser = `
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px;">User</span></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><p class="dropdown-item">${getUser[getUser.length - 1].email}</p></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="dropdown-item">
+                                <a href="adminPage.html">Admin Page</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <i class="fa-solid fa-right-from-bracket" onclick="logOut()" style="font-size:28px;"></i>
+                        </a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                    <i class="fa-solid fa-right-from-bracket" onclick="logOut()" style="font-size:28px;"></i>
-                </a>
-            </li>
-            </li>
-        </ul>
             `
-        change.innerHTML = renderUser;
+                document.getElementById("login").innerHTML = renderUser;
+            }
+            else {
+                renderUser = `
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px;">User</span></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><p class="dropdown-item">${getUser[getUser.length - 1].email}</p></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="dropdown-item">
+                                <a href="changePassword.html">Đổi mật khẩu</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <i class="fa-solid fa-right-from-bracket" onclick="logOut()" style="font-size:28px;"></i>
+                        </a>
+                    </li>
+                </ul>
+            `
+                document.getElementById("login").innerHTML = renderUser;
+            }
+        }
     }
 }
 renderLogin();
+
 
 function logOut() {
     console.log("click");

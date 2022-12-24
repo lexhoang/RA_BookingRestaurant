@@ -116,21 +116,20 @@ signIn.addEventListener("click", function () {
         errorCheck.style.color = "red";
         console.error("Email hoặc mật khẩu không đúng");
         swal("Email hoặc mật khẩu không đúng", "", "error");
-
     }
 })
 
 
 ////////////        CHECK FORM        //////////////
-function checkForm() {
-    if (checkLocalStorage() == true) {
-        console.log("Tài khoản hợp lệ");
-        return true;
-    } else {
-        console.log("Tài khoản không hợp lệ");
-        return false;
-    }
-}
+// function checkForm() {
+//     if (checkLocalStorage() == true) {
+//         console.log("Tài khoản hợp lệ");
+//         return true;
+//     } else {
+//         console.log("Tài khoản không hợp lệ");
+//         return false;
+//     }
+// }
 
 //       KIỂM TRA XEM TÀI KHOẢN ĐÃ ĐƯƠC ĐĂNG KÝ CHƯA
 function checkForm() {

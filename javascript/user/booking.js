@@ -52,7 +52,7 @@ function bookingClick() {
 
 function checkForm() {
     if (inpFullName.value.trim() == "" || inpEmail.value.trim() == "" || inpPhone.value.trim() == "" || inpDate.value.trim() == ""
-        || selectTime.value.trim() == "NOT" || selectMinutes.value.trim() == "NOT"
+        || selectTime.value == "NOT" || selectMinutes.value == "NOT"
         || inpPeople.value.trim() == "") {
         swal("Bạn chưa nhập đủ thông tin", "", "error");
         return false;

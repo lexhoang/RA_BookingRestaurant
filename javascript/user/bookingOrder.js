@@ -23,13 +23,13 @@ function renderOrder(getListBooking) {
                                         <hr>
                                     </div>
                                     <div class="col-lg-6 col-md-12">
-                                        <label>Ngày tạo:</label> <span>${getListBooking[j].createDate}</span>
-                                        <hr>
                                         <label>Đặt bàn ngày:</label> <span>${new Date(getListBooking[j].date).toLocaleDateString()}</span>
                                         <hr>
                                         <label>Giờ đặt bàn:</label> <span>${getListBooking[j].time}:${getListBooking[j].minutes}</span>
                                         <hr>
-                                        <label>Số lượng người:</label> <span>${getListBooking[j].people} người</span>
+                                        <label>Số lượng:</label> <span>${getListBooking[j].people} người</span>
+                                        <hr>
+                                        <label>Ngày tạo:</label> <span>${getListBooking[j].createDateTime}</span>
                                         <hr>
                                     </div>
                                 </div>

@@ -19,11 +19,11 @@ function bookingClick() {
     if (listUserLogin != null) {
         if (checkForm() == true) {
             let getListBooking = JSON.parse(localStorage.getItem("listBooking"));
-            let createDate = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+            let createDateTime = new Date().getHours() + ":" + new Date().getMinutes() + " -- " + new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
 
             let objectBooking = {
                 id: (new Date()).getTime(),
-                createDate: createDate,
+                createDateTime: createDateTime,
                 name: inpFullName.value,
                 email: inpEmail.value,
                 phone: inpPhone.value,

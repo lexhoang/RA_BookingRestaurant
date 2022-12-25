@@ -24,16 +24,18 @@ function renderTableOrder(getListProducts) {
                 <tr>
                     <td>${getListProducts[i].id}</td>
                     <td>
-                        <img src="${getListProducts[i].image}" width=50%/>
+                        <img src="${getListProducts[i].image}" width=100px/>
                     </td>
                     <td>${getListProducts[i].name}</td>
-                    <td>${getListProducts[i].description}</td>
                     <td>${numberWithCommas(getListProducts[i].price)} VNĐ</td>
                     <td>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditFood" onclick="editMenu(${getListProducts[i].id})" >Sửa</button>
+                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDetail" onclick="detailMenu(${getListProducts[i].id})">Chi tiết</button>
                     </td>
                     <td>
-                    <button class="btn btn-danger" onclick="deleteMenu(${getListProducts[i].id})">Xóa</button>
+                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalEditFood" onclick="editMenu(${getListProducts[i].id})">Sửa</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger w-100" onclick="deleteMenu(${getListProducts[i].id})">Xóa</button>
                      </td>
                 </tr>
              `
@@ -57,6 +59,23 @@ function addNewProduct() {
             renderTableOrder(getListProducts);
         });
 }
+
+function detailMenu(paramId) {
+    const detailName = document.getElementById("detail-name");
+    const detailImg = document.getElementById("detail-img");
+    const detailDescription = document.getElementById("detail-description");
+    const detailPrice = document.getElementById("detail-price");
+
+    for (let i = 0; i < getListProducts.length; i++) {
+        if (getListProducts[i].id == paramId) {
+            detailName.innerHTML = getListProducts[i].name;
+            detailImg.src = getListProducts[i].image;
+            detailDescription.innerHTML = getListProducts[i].description;
+            detailPrice.innerHTML = numberWithCommas(getListProducts[i].price) + " VNĐ";
+        }
+    }
+}
+
 
 function deleteMenu(paramId) {
     for (let i = 0; i < getListProducts.length; i++) {

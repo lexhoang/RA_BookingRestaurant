@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/btn.css">
+    <link rel="stylesheet" href="./styles/product.css">
 </head>
 
 <body onscroll="myScroll()">
@@ -36,16 +37,13 @@
         <table class="table table-boder mt-5">
             <thead class="text-center">
                 <tr>
-                    <th>Mã đặt bàn</th>
-                    <th>Ngày tạo</th>
                     <th>Tên khách hàng</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
                     <th>Đặt bàn ngày</th>
                     <th>Thời gian</th>
-                    <th>Số lượng người</th>
-                    <th>Ghi chú</th>
-                    <th></th>
+                    <th>Số lượng</th>
+                    <th colspan="2"></th>
                 </tr>
             </thead>
 
@@ -53,6 +51,50 @@
 
             </tbody>
         </table>
+
+        <!-- MODAL DETAIL -->
+        <div class="modal modal-lg fade" id="modalDetailOrder" tabindex="-1" aria-labelledby="modalDetailOrderLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title fs-2 card-name" style="flex:9; text-align:center">Thông Tin Đặt Bàn</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body cardOrder">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <label>Mã đặt bàn: </label> <span id="orderDetailId"></span>
+                                <hr>
+                                <label>Người đặt bàn:</label> <span id="orderDetailName"></span>
+                                <hr>
+                                <label>Địa chỉ Email:</label> <span id="orderDetailEmail"></span>
+                                <hr>
+                                <label>Số điện thoại:</label> <span id="orderDetailPhone"></span>
+                                <hr>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <label>Đặt bàn ngày:</label> <span id="orderDetailDate"></span>
+                                <hr>
+                                <label>Giờ đặt bàn:</label>
+                                <span id="orderDetailTime"></span>
+                                <hr>
+                                <label>Số lượng:</label> <span id="orderDetailPeople"></span>
+                                <hr>
+                                <label>Ngày tạo:</label> <span id="orderDetailCreateDate"></span>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label>Ghi chú:</label> <span id="orderDetailNote"></span>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 <script>

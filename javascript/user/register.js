@@ -13,14 +13,14 @@ function onloadForm() {
                 <label for="email"><b>Email</b></label>
                 <div id="noteEmail"></div>
                 <input type="text" class="form-control" id="inp-email" placeholder="Enter Email" name="email"
-                    onchange="checkEmail()" required>
+                    oninput="checkEmail()" required>
             </div>
 
             <div class="form-group mt-4">
                 <label for="password"><b>Password</b></label>
                 <div id="notePassword"></div>
                 <input type="password" class="form-control" id="inp-password" placeholder="Enter Password"
-                    name="password" required onchange="checkPassword()">
+                    name="password" required oninput="checkPassword()">
                 <i class="fa-solid fa-eye-slash" id="btn-password"></i>
             </div>
 
@@ -28,7 +28,7 @@ function onloadForm() {
                 <label for="confirmPassword"><b>Repeat Password</b></label>
                 <div id="noteConfirmPassword"></div>
                 <input type="password" id="inp-confirmPassword" class="form-control" placeholder="Confirm Password"
-                    name="confirmPassword" onchange="checkConfirmPassword()" required>
+                    name="confirmPassword" oninput="checkConfirmPassword()" required>
                 <i class="fa-solid fa-eye-slash" id="btn-confirmPassword"></i>
             </div>
             <button id="btn-submit" class="mt-4 btn-css w-100">Register</button>

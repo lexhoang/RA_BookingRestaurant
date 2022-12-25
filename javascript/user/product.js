@@ -23,7 +23,7 @@ const allListProducts = [
     {
         id: 4,
         image: "./images/product4.png",
-        name: "BÒ LÚC LẮC",
+        name: "LÕI RÙA TRẦN",
         description: "Gắp một gắp lõi rùa, chấm tí mắm gừng mằn mặn cho vào miệng, vị giòn, ngọt, sừn sựt rồi mùi thơm nồng của sả, gừng lan tỏa khiến món ăn trở nên tuyệt hảo không ngờ, ăn hoài không ngán.",
         price: 250000
     }

@@ -12,7 +12,6 @@ function onloadForm() {
                 <div class="form-group">
                     <label for="email"><b>Email</b></label>
                     <input type="text" class="form-control" id="inp-email" placeholder="Enter Email" name="email" required>
-                    <div id="noteEmail"></div>
                 </div>
 
                 <div class="form-group mt-4">
@@ -20,7 +19,6 @@ function onloadForm() {
                     <input type="password" class="form-control" id="inp-password" placeholder="Enter Password"
                         name="password" required>
                     <i class="fa-solid fa-eye-slash" id="btn-password"></i>
-                    <div id="notePassword"></div>
                 </div>
                 <p id="errorCheck"></p>
                 <button id="btn-submit" class="mt-4 btn-css w-100">LOGIN</button>
@@ -68,18 +66,18 @@ const errorCheck = document.getElementById("errorCheck");
 // FORGOT PASSWORD
 function forgotPassword() {
     let inpForgot = document.getElementById("inp-forgot");
-    let listUsers = JSON.parse(localStorage.getItem("listUserRegister"));
-    if (listUsers != null) {
-        for (let i = 0; i < listUsers.length; i++) {
-            if (listUsers[i].email == inpForgot.value) {
+    let listUsersRegister = JSON.parse(localStorage.getItem("listUserRegister"));
+    if (listUsersRegister != null) {
+        for (let i = 0; i < listUsersRegister.length; i++) {
+            if (listUsersRegister[i].email == inpForgot.value) {
                 Email.send({
                     Host: "smtp.elasticemail.com",
                     Username: "haitqrikkei@gmail.com",
                     Password: "C25575E4F3C7BBDE2F82765E0C4CC804C88D",
-                    To: `${listUsers[i].email}`,
+                    To: `${listUsersRegister[i].email}`,
                     From: "haitqrikkei@gmail.com",
                     Subject: "This is the subject",
-                    Body: `Mật khẩu của bạn là: ${listUsers[i].password}`
+                    Body: `Mật khẩu của bạn là: ${listUsersRegister[i].password}`
                 }).then((message) => {
                     swal(message, "Chúng tôi đã gửi mật khẩu đến gmail của bạn", "success");
                 })
@@ -121,16 +119,6 @@ signIn.addEventListener("click", function () {
 
 
 ////////////        CHECK FORM        //////////////
-// function checkForm() {
-//     if (checkLocalStorage() == true) {
-//         console.log("Tài khoản hợp lệ");
-//         return true;
-//     } else {
-//         console.log("Tài khoản không hợp lệ");
-//         return false;
-//     }
-// }
-
 //       KIỂM TRA XEM TÀI KHOẢN ĐÃ ĐƯƠC ĐĂNG KÝ CHƯA
 function checkForm() {
     let getUserRegister = localStorage.getItem("listUserRegister");
@@ -138,7 +126,7 @@ function checkForm() {
     for (const index in listUserRegister) {
         console.log(listUserRegister[index]);
         if (listUserRegister[index].email == inpEmail.value && listUserRegister[index].password == inpPassword.value
-            && listUserRegister[index].status == "availability") {
+            && listUserRegister[index].status == "Đang hoạt động") {
             console.log("Tài khoản hợp lệ");
             return true;
         } else {

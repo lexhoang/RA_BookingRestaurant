@@ -32,7 +32,7 @@ function renderHeader() {
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-menu">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="index.html">Trang chủ</a>
+                                        <a class="nav-link active" aria-current="page" href="index.html">Trang Chủ</a>
                                     </li>
 
                                     <li class="nav-item">
@@ -84,14 +84,19 @@ function renderLogin() {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px;">User</span></i>
+                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px; letter-spacing:5px">ADMIN</span></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li><p class="dropdown-item">${getUser[getUser.length - 1].email}</p></li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-item">
-                                <a href="adminPage.html">Admin Page</a>
+                                <a href="adminOrder.html" style="color:#000">Admin Page</a>
                             </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="dropdown-item">
+                                <a href="changePassword.html"  style="color:#000">Đổi mật khẩu</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -108,7 +113,7 @@ function renderLogin() {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px;">User</span></i>
+                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px; letter-spacing:5px">User</span></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li><p class="dropdown-item">${getUser[getUser.length - 1].email}</p></li>

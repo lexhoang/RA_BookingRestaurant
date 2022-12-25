@@ -96,7 +96,7 @@
                         <label class="form-label">Chọn phút</label>
                         <select class="form-select" id="select-minutes">
                             <option value="NOT">Chọn phút</option>
-                            <option value="0">0 phút</option>
+                            <option value="00">0 phút</option>
                             <option value="30">30 phút</option>
                         </select>
                     </div>
@@ -104,7 +104,8 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="form-group">
                         <label class="form-label">Số người (*)</label>
-                        <input type="number" class="form-control" id="inp-people" placeholder="Nhập số người">
+                        <input type="number" oninput="checkNumberPeople()" class="form-control" id="inp-people"
+                            placeholder="Nhập số người (1 - 50)">
                     </div>
                 </div>
             </div>

@@ -82,11 +82,16 @@ renderDate();
 
 function resetForm() {
     inpFullName.value = "";
-    inpEmail.value = "";
     inpPhone.value = "";
     inpDate.value = "";
     selectTime.value = "";
     selectMinutes.value = "";
     inpPeople.value = "";
     inpNote.value = "";
+}
+
+function checkNumberPeople() {
+    if (inpPeople.value > 50 || inpPeople.value <= 0) {
+        swal("Số lượng người không hợp lệ", "", "error")
+    }
 }

@@ -55,9 +55,10 @@ let signUp = document.getElementById("btn-submit");
 signUp.addEventListener("click", function () {
     if (checkForm()) {
         let objectUser = {
+            id: (new Date()).getTime(),
             email: inpEmail.value,
             password: inpPassword.value,
-            status: "availability"
+            status: "Đang hoạt động"
         }
         let check = false;
         let listUserRegister = localStorage.getItem("listUserRegister");

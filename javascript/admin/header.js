@@ -22,7 +22,7 @@ function renderHeader() {
                 <nav id="header-navbar" class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark"
                     style="transition:calc(0.5s)">
                     <div class="container-fluid">
-                        <div class="col-3">
+                        <div class="col-2">
                             <a class="navbar-brand" href="index.html">
                                 <img src="./images/logo.png" alt="" width="160px">
                             </a>
@@ -33,7 +33,7 @@ function renderHeader() {
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
-                        <div class="col-9">
+                        <div class="col-10">
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-menu">
                                     <li class="nav-item">

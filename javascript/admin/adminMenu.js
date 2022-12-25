@@ -12,6 +12,10 @@ const editDescriptionFood = document.getElementById('editDescriptionFood');
 const editPriceFood = document.getElementById('editPriceFood');
 
 
+function numberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+}
+
 function renderTableOrder(getListProducts) {
     let renderTableOrder = "";
 
@@ -24,7 +28,7 @@ function renderTableOrder(getListProducts) {
                     </td>
                     <td>${getListProducts[i].name}</td>
                     <td>${getListProducts[i].description}</td>
-                    <td>${getListProducts[i].price}</td>
+                    <td>${numberWithCommas(getListProducts[i].price)} VNĐ</td>
                     <td>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditFood" onclick="editMenu(${getListProducts[i].id})" >Sửa</button>
                     </td>
@@ -62,7 +66,7 @@ function deleteMenu(paramId) {
             swal("Xóa món ăn thành công", "", "success")
                 .then(() => {
                     renderTableOrder(getListProducts);
-                })
+                });
         }
     }
 }
@@ -94,7 +98,7 @@ function saveEditProduct() {
             swal("Sửa món ăn thành công", "", "success")
                 .then(() => {
                     renderTableOrder(getListProducts);
-                })
+                });
         }
     }
 }

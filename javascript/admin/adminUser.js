@@ -7,6 +7,7 @@ function renderTableOrder(listUserRegister) {
         if (listUserRegister[i].email == "lehoang999113@gmail.com") {
             renderTableOrder += `
             <tr>
+                <td>${listUserRegister[i].id}</td>
                 <td>${listUserRegister[i].email}</td>
                 <td>${listUserRegister[i].status}</td>
                 <td id="btn-disableUser${i}">
@@ -19,6 +20,7 @@ function renderTableOrder(listUserRegister) {
         } else if (listUserRegister[i].status == "Vô hiệu hóa") {
             renderTableOrder += `
             <tr>
+                <td>${listUserRegister[i].id}</td>
                 <td>${listUserRegister[i].email}</td>
                 <td>${listUserRegister[i].status}</td>
                 <td id="btn-disableUser${i}" style="display:none">
@@ -34,6 +36,7 @@ function renderTableOrder(listUserRegister) {
         else {
             renderTableOrder += `
             <tr>
+                <td>${listUserRegister[i].id}</td>
                 <td>${listUserRegister[i].email}</td>
                 <td>${listUserRegister[i].status}</td>
                 <td id="btn-disableUser${i}">

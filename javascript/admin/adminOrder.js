@@ -7,6 +7,7 @@ function renderTableOrder(getListBooking) {
         renderTableOrder += `
                 <tr>
                     <td>${getListBooking[i].id}</td>
+                    <td>${getListBooking[i].createDate}</td>
                     <td>${getListBooking[i].name}</td>
                     <td>${getListBooking[i].email}</td>
                     <td>${getListBooking[i].phone}</td>

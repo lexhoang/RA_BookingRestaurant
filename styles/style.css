@@ -8,6 +8,15 @@ a {
     text-decoration: none;
 }
 
+marquee {
+    background-color: firebrick;
+    color: white;
+    height: 30px;
+    font-size: 20px;
+    padding: 0 50px;
+    letter-spacing: 5px;
+}
+
 .nav-menu {
     display: flex;
     flex-wrap: wrap;

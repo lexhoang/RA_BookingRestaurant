@@ -27,7 +27,7 @@ function renderTableOrder(getListBooking) {
                         <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDetailOrder" onclick="detailOrder(${getListBooking[i].id})">Chi Tiết</button>
                     </td>
                     <td>
-                        <button class="btn btn-danger w-100" onclick="deleteOrder(${getListBooking[i].id})">Xóa</button>
+                        <button class="btn btn-danger w-100" onclick="deleteOrder(${getListBooking[i].id})"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
              `

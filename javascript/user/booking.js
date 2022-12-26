@@ -65,6 +65,7 @@ function checkForm() {
         swal("Bạn chưa nhập đủ thông tin", "", "error");
         return false;
     }
+
     return true;
 }
 
@@ -98,8 +99,14 @@ function resetForm() {
     inpNote.value = "";
 }
 
+function checkNumberPhone() {
+    if (inpPhone.value.length < 10 || isNaN(inpPhone.value)) {
+        swal("Số điện thoại không hợp lệ", "", "error");
+    }
+}
+
 function checkNumberPeople() {
-    if (inpPeople.value > 50 || inpPeople.value <= 0) {
+    if (inpPeople.value > 50 || inpPeople.value <= 0 || isNaN(inpPeople.value)) {
         swal("Số lượng người không hợp lệ", "", "error")
     }
 }

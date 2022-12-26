@@ -25,18 +25,18 @@ function renderTableOrder(getListProducts) {
                 <tr>
                     <td>${getListProducts[i].id}</td>
                     <td>
-                        <img src="${getListProducts[i].image}" width=100px/>
+                        <img src="${getListProducts[i].image}" style="width:100px; height:100px"/>
                     </td>
                     <td>${getListProducts[i].name}</td>
                     <td>${numberWithCommas(getListProducts[i].price)} VNĐ</td>
+
                     <td>
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDetail" onclick="detailMenu(${getListProducts[i].id})">Chi tiết</button>
+                        <button class="btn btn-info w-100" data-bs-toggle="modal" data-bs-target="#modalDetail" onclick="detailMenu(${getListProducts[i].id})">Chi tiết</button>
                     </td>
-                    <td>
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalEditFood" onclick="editMenu(${getListProducts[i].id})">Sửa</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger w-100" onclick="deleteMenu(${getListProducts[i].id})">Xóa</button>
+                    <td class="btn-group w-100">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditFood" onclick="editMenu(${getListProducts[i].id})"><i class="fa-solid fa-pen-to-square"></i></button>
+
+                        <button class="btn btn-danger" onclick="deleteMenu(${getListProducts[i].id})"><i class="fa-solid fa-trash"></i></button>
                      </td>
                 </tr>
              `

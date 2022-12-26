@@ -21,7 +21,7 @@ function onloadForm() {
                     <i class="fa-solid fa-eye-slash" id="btn-password"></i>
                 </div>
                 <p id="errorCheck"></p>
-                <button id="btn-submit" class="mt-4 btn-css w-100">LOGIN</button>
+                <button id="btn-submit" onclick="clickLogin()" class="mt-4 btn-css w-100">ĐĂNG NHẬP</button>
 
                 <div class="text-center">
                     <div class="text-white mt-3 btn" data-bs-toggle="modal"
@@ -90,9 +90,15 @@ function forgotPassword() {
     }
 }
 
+document.addEventListener("keydown", function (e) {
+    if (e.keyCode == "13") {
+        clickLogin();
+    }
+})
+
+
 //NÚT SUBMIT
-let signIn = document.getElementById("btn-submit");
-signIn.addEventListener("click", function () {
+ function clickLogin() {
     let listUserLogin = JSON.parse(localStorage.getItem("userLogin"))
     let objectUser = {
         email: inpEmail.value,
@@ -115,7 +121,7 @@ signIn.addEventListener("click", function () {
         console.error("Email hoặc mật khẩu không đúng");
         swal("Email hoặc mật khẩu không đúng", "", "error");
     }
-})
+}
 
 
 ////////////        CHECK FORM        //////////////

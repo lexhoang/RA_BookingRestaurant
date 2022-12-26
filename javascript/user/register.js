@@ -31,7 +31,7 @@ function onloadForm() {
                     name="confirmPassword" oninput="checkConfirmPassword()" required>
                 <i class="fa-solid fa-eye-slash" id="btn-confirmPassword"></i>
             </div>
-            <button id="btn-submit" class="mt-4 btn-css w-100">Register</button>
+            <button id="btn-submit" onclick="clickRegister()" class="mt-4 btn-css w-100">ĐĂNG KÝ</button>
         </div>
     `
     contentForm.innerHTML += renderForm;
@@ -49,10 +49,14 @@ const noteEmail = document.getElementById("noteEmail");
 const notePassword = document.getElementById("notePassword");
 const noteConfirmPassword = document.getElementById("noteConfirmPassword");
 
+document.addEventListener("keydown", function (e) {
+    if (e.keyCode == "13") {
+        clickRegister();
+    }
+})
 
 //NÚT SUBMIT
-let signUp = document.getElementById("btn-submit");
-signUp.addEventListener("click", function () {
+function clickRegister() {
     if (checkForm()) {
         let objectUser = {
             id: (new Date()).getTime(),
@@ -98,7 +102,7 @@ signUp.addEventListener("click", function () {
         }
     }
 
-})
+}
 
 
 ////////////        CHECK FORM        //////////////

@@ -37,6 +37,12 @@ const btnPassword = document.getElementById("btn-password");
 const inpNewPassword = document.getElementById("inp-newPassword");
 const btnNewPassword = document.getElementById("btn-newPassword");
 
+document.addEventListener("keydown", function (e) {
+    if (e.keyCode == "13") {
+        changePassword();
+    }
+})
+
 function changePassword() {
     let listUserRegister = JSON.parse(localStorage.getItem("listUserRegister"));
     for (let i = 0; i < listUserRegister.length; i++) {
@@ -52,7 +58,6 @@ function changePassword() {
         } else {
             console.log("erorr");
             swal("Email hoặc mật khẩu bạn nhập không đúng!", "", "error");
-            break;
         }
     }
 }

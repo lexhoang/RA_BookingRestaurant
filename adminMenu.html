@@ -67,24 +67,34 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <div>
                             <div class="mb-3">
                                 <label for="addImgFood" class="form-label">Thêm ảnh:</label>
-                                <input type="file" class="form-control" id="addImgFood">
+                                <input type="file" class="form-control" id="addImgFood" onchange="readURL(this)"
+                                    oninput="changeImgAdd()" />
+                                <!-- <div class="col-3">
+                                        <button class="btn btn-success" onclick="changeImgAdd()">Hiện ảnh</button>
+                                    </div> -->
+                                <div class="p-3">
+                                    <img src="" alt="" id="renderImgAdd" width="100%" />
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="addNameFood" class="form-label">Thêm tên món ăn:</label>
-                                <input type="text" class="form-control" id="addNameFood">
+                            <div class="row my-3">
+                                <div class="col-md-8 col-sm-12">
+                                    <label for="addNameFood" class="form-label">Thêm tên món ăn:</label>
+                                    <input type="text" class="form-control" id="addNameFood">
+                                </div>
+                                <div class="col-md-4 col-sm-12">
+                                    <label for="addPriceFood" class="form-label">Thêm giá tiền:</label>
+                                    <input type="number" class="form-control" id="addPriceFood">
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="addDescriptionFood" class="form-label">Thêm mô tả món ăn:</label>
                                 <textarea class="form-control" cols="30" rows="10" id="addDescriptionFood"></textarea>
                             </div>
-                            <div class="mb-3">
-                                <label for="addPriceFood" class="form-label">Thêm giá tiền:</label>
-                                <input type="number" class="form-control" id="addPriceFood">
-                            </div>
-                        </form>
+
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -134,28 +144,34 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <div class="mb-3"
-                                style="display: flex; justify-content:space-around; align-items: center; object-fit: cover;gap:20px">
-                                <img src="" alt="ảnh món ăn" id="imgFoodBefore" width="30%">
-                                <div>
+                        <div>
+                            <div class="mb-3 row">
+                                <div class="col-5" style="height: 180px;">
+                                    <img src="" alt="ảnh món ăn" id="imgFoodBefore" width="100%" height="100%"
+                                        style="object-fit:cover">
+                                </div>
+                                <div class="col-7">
                                     <label for="editImgFood" class="form-label">Sửa ảnh:</label>
-                                    <input type="file" class="form-control" id="editImgFood">
+                                    <input type="file" class="form-control" id="editImgFood" onchange="readURL(this);"
+                                        oninput="changeImgEdit()">
+                                </div>
+                                <!-- <button class="btn btn-success" onclick="changeImgEit()">Hiện ảnh</button> -->
+                            </div>
+                            <div class="row my-4">
+                                <div class="col-md-8 col-sm-12">
+                                    <label for="editNameFood" class="form-label">Sửa tên món ăn:</label>
+                                    <input type="text" class="form-control" id="editNameFood">
+                                </div>
+                                <div class="col-md-4 col-sm-12">
+                                    <label for="editPriceFood" class="form-label">Sửa giá tiền:</label>
+                                    <input type="number" class="form-control" id="editPriceFood">
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="editNameFood" class="form-label">Sửa tên món ăn:</label>
-                                <input type="text" class="form-control" id="editNameFood">
-                            </div>
-                            <div class="mb-3">
+                            <div class="my-4">
                                 <label for="editDescriptionFood" class="form-label">Sửa mô tả món ăn:</label>
                                 <textarea class="form-control" cols="30" rows="10" id="editDescriptionFood"></textarea>
                             </div>
-                            <div class="mb-3">
-                                <label for="editPriceFood" class="form-label">Sửa giá tiền:</label>
-                                <input type="number" class="form-control" id="editPriceFood">
-                            </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

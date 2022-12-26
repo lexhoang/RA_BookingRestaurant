@@ -1,6 +1,7 @@
 var getListProducts = JSON.parse(localStorage.getItem('listProducts'));
 
 const addImgFood = document.getElementById('addImgFood');
+const renderImgAdd = document.getElementById("renderImgAdd")
 const addNameFood = document.getElementById('addNameFood');
 const addDescriptionFood = document.getElementById('addDescriptionFood');
 const addPriceFood = document.getElementById('addPriceFood');
@@ -44,22 +45,53 @@ function renderTableOrder(getListProducts) {
 }
 renderTableOrder(getListProducts);
 
+
+
+// THÊM FILE ẢNH MỚI
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            // console.log("111", e.target.result);
+            localStorage.setItem("image", e.target.result)
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+///////////     THÊM MỚI   ___  CREATE     ///////////
+
+function changeImgAdd() {
+    setTimeout(() => {
+        renderImgAdd.src = localStorage.getItem("image");
+    }, 300)
+}
+
 function addNewProduct() {
     let objectProduct = {
-        id: getListProducts.length + 1,
-        image: addImgFood.value,
+        id: getListProducts[getListProducts.length - 1].id + 1,
+        image: localStorage.getItem("image"),
         name: addNameFood.value,
         description: addDescriptionFood.value,
         price: addPriceFood.value,
     }
     getListProducts.push(objectProduct);
     localStorage.setItem("listProducts", JSON.stringify(getListProducts));
+    renderTableOrder(getListProducts);
     swal("Thêm món ăn thành công", "", "success")
-        .then(() => {
-            renderTableOrder(getListProducts);
-        });
+
+    addImgFood.value = "";
+    renderImgAdd.src = "";
+    addNameFood.value = "";
+    addDescriptionFood.value = "";
+    addPriceFood.value = "";
+    localStorage.removeItem("image");
 }
 
+
+
+///////////      CHI TIẾT  ___ READ      ///////////
 function detailMenu(paramId) {
     const detailName = document.getElementById("detail-name");
     const detailImg = document.getElementById("detail-img");
@@ -77,25 +109,14 @@ function detailMenu(paramId) {
 }
 
 
-function deleteMenu(paramId) {
-    for (let i = 0; i < getListProducts.length; i++) {
-        if (getListProducts[i].id == paramId) {
-            getListProducts.splice(i, 1);
-            localStorage.setItem("listProducts", JSON.stringify(getListProducts));
-            swal("Xóa món ăn thành công", "", "success")
-                .then(() => {
-                    renderTableOrder(getListProducts);
-                });
-        }
-    }
-}
-
-let indexEdit = "";
+///////////      SỬA  ___ EDIT      ///////////
+var indexEdit = "";
+//  Thêm dữ liệu vào modal
 function editMenu(paramId) {
     for (let i = 0; i < getListProducts.length; i++) {
         if (getListProducts[i].id == paramId) {
             imgFoodBefore.src = getListProducts[i].image;
-            // editImgFood.value =
+            // editImgFood.src = localStorage.getItem("image");
             editNameFood.value = getListProducts[i].name;
             editDescriptionFood.value = getListProducts[i].description;
             editPriceFood.value = getListProducts[i].price;
@@ -104,20 +125,40 @@ function editMenu(paramId) {
     indexEdit = paramId
 }
 
+function changeImgEdit() {
+    setTimeout(() => {
+        imgFoodBefore.src = localStorage.getItem("image");
+    }, 500)
+}
+
+//  Lưu dữ liệu lên localStorage và hiển thị lại bảng
 function saveEditProduct() {
     console.log(indexEdit);
     for (let i = 0; i < getListProducts.length; i++) {
         if (getListProducts[i].id == indexEdit) {
-            getListProducts[i].image = imgFoodBefore.src;
+            getListProducts[i].image = localStorage.getItem("image");
             // editImgFood.value =
             getListProducts[i].name = editNameFood.value;
             getListProducts[i].description = editDescriptionFood.value;
             getListProducts[i].price = editPriceFood.value;
             localStorage.setItem("listProducts", JSON.stringify(getListProducts));
+            renderTableOrder(getListProducts);
+
             swal("Sửa món ăn thành công", "", "success")
-                .then(() => {
-                    renderTableOrder(getListProducts);
-                });
+        }
+    }
+    //localStorage.removeItem("image");
+}
+
+
+///////////      XÓA  ___ DELETE        /////////////
+function deleteMenu(paramId) {
+    for (let i = 0; i < getListProducts.length; i++) {
+        if (getListProducts[i].id == paramId) {
+            getListProducts.splice(i, 1);
+            localStorage.setItem("listProducts", JSON.stringify(getListProducts));
+            renderTableOrder(getListProducts);
+            swal("Xóa món ăn thành công", "", "success")
         }
     }
 }

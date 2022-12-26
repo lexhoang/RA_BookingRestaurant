@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type='file' id="uploadBannerImage" onchange="readURL(this);" />
+    <div>
+        <button onclick="render()"> hiện ảnh</button>
+        <img src="" alt="" id="bannerImg">
+    </div>
+    <script>
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    // console.log("111", e.target.result);
+                    localStorage.setItem("image", e.target.result)
+                    // document.getElementById('bannerImg').src = e.target.result;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function render() {
+            let dataImage = localStorage.getItem("image");
+            document.getElementById("bannerImg").src = dataImage;
+        }
+    </script>
+</body>
+
+</html>

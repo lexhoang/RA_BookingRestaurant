@@ -15,6 +15,12 @@ const selectMinutes = document.getElementById("select-minutes");
 const inpPeople = document.getElementById("inp-people");
 const inpNote = document.getElementById("inp-note");
 
+document.addEventListener("keydown", function (e) {
+    if (e.keyCode == "13") {
+        bookingClick();
+    }
+});
+
 function bookingClick() {
     if (listUserLogin != null) {
         if (checkForm() == true) {

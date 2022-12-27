@@ -145,7 +145,20 @@ function renderFormReview(getReview) {
                             </div>
                     </div>
                     <div class="mt-2">
-
+                    ${(userLogin != null) ?
+                        ` ${(userLogin[0].role != "User") ?
+                            `<div class="row">
+                                <div class="col-9"></div>
+                                <div class="col-3">
+                                    <div class="my-1">
+                                        <p class="btn-feedback"onclick="btnFeedback(${getReview[i].id})">Phản hồi</p>
+                                    </div>
+                                </div>
+                            </div>`
+                            : ""
+                        }`
+                        : ""
+                    }
                         <div class="mt-3" id="feedbackReview-${getReview[i].id}"> </div>
                     </div>
                 </div>
@@ -174,7 +187,20 @@ function renderFormReview(getReview) {
                             </div>
                     </div>
                     <div class="mt-2">
-
+                    ${(userLogin != null) ?
+                        ` ${(userLogin[0].role != "User") ?
+                            `<div class="row">
+                                <div class="col-9"></div>
+                                <div class="col-3">
+                                    <div class="my-1">
+                                        <p class="btn-feedback"onclick="btnFeedback(${getReview[i].id})">Phản hồi</p>
+                                    </div>
+                                </div>
+                            </div>`
+                            : ""
+                        }`
+                        : ""
+                    }
                         <div class="mt-3" id="feedbackReview-${getReview[i].id}"> </div>
                     </div>
                 </div>
@@ -270,3 +296,104 @@ function sendFeedbackReview(paramId) {
         }
     }
 }
+
+
+
+function renderFormReview(getReview) {
+    let renderFormReview = "";
+
+    if (getReview == null) {
+        renderFormReview = "";
+    } else {
+        for (let i = 0; i < getReview.length; i++) {
+            if (getReview[i].type == "review") {
+                renderFormReview += `
+                <div class="bg-light p-3" style="margin-top:120px">
+                    <div class="row">
+                        <div class="col-10">
+                            <img src="${getReview[i].image}" class="renderImgUser" alt="">
+                            <span>${getReview[i].user}</span>
+                        </div>
+                        ${(userLogin != null) ?
+                        `${(userLogin[0].role != "User") ?
+                            `<div class="col-2 text-center">
+                                <button class="btn btn-danger" onclick="deleteReview(${getReview[i].id})">Xóa</button>
+                            </div>`
+                            : ""
+                        }`
+                        : ""
+                    }
+
+                    </div>
+                    <div class="mt-2">
+                            <div class="card mx-4 my-1 form-review">
+                                <div class="card-body">${getReview[i].review}</div>
+                            </div>
+                    </div>
+                    <div class="mt-2">
+                    ${(userLogin != null) ?
+                        ` ${(userLogin[0].role != "User") ?
+                            `<div class="row">
+                                <div class="col-9"></div>
+                                <div class="col-3">
+                                    <div class="my-1">
+                                        <p class="btn-feedback"onclick="btnFeedback(${getReview[i].id})">Phản hồi</p>
+                                    </div>
+                                </div>
+                            </div>`
+                            : ""
+                        }`
+                        : ""
+                    }
+                        <div class="mt-3" id="feedbackReview-${getReview[i].id}"> </div>
+                    </div>
+                </div>
+                    `
+            } else {
+                renderFormReview += `
+                <div class="bg-light" style="margin-left:100px">
+                    <div class="row">
+                        <div class="col-10">
+                            <img src="${getReview[i].image}" class="renderImgUser" alt="">
+                            <span>${getReview[i].user}</span>
+                        </div>
+                        ${(userLogin != null) ?
+                        `${(userLogin[0].role != "User") ?
+                            `<div class="col-2 text-center">
+                                    <button class="btn btn-danger" onclick="deleteReview(${getReview[i].id})">Xóa</button>
+                                </div>`
+                            : ""
+                        }`
+                        : ""
+                    }
+                    </div>
+                    <div class="mt-2">
+                            <div class="card mx-4 my-1 form-review">
+                                <div class="card-body">${getReview[i].review}</div>
+                            </div>
+                    </div>
+                    <div class="mt-2">
+                    ${(userLogin != null) ?
+                        ` ${(userLogin[0].role != "User") ?
+                            `<div class="row">
+                                <div class="col-9"></div>
+                                <div class="col-3">
+                                    <div class="my-1">
+                                        <p class="btn-feedback"onclick="btnFeedback(${getReview[i].id})">Phản hồi</p>
+                                    </div>
+                                </div>
+                            </div>`
+                            : ""
+                        }`
+                        : ""
+                    }
+                        <div class="mt-3" id="feedbackReview-${getReview[i].id}"> </div>
+                    </div>
+                </div>
+                    `
+            }
+        }
+    }
+    document.getElementById("form-review").innerHTML = renderFormReview
+}
+renderFormReview(getReview);

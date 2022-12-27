@@ -32,12 +32,16 @@
 
 
     <!-- ////////          CONTENT          //////// -->
-    <div class="container" style="margin-top:180px">
-        <marquee direction="left">
+    <div class="container" style="margin-top:80px">
+        <marquee class="marquee" direction="left">
             CHÚC BẠN MỘT NGÀY TỐT LÀNH !!!
         </marquee>
 
         <h2 class="text-center mt-5" style="letter-spacing:3px">Quản Lý Khách Đặt Bàn</h2>
+        <div class="col-6 mt-5 mx-auto">
+            <input type="text" class="form-control" id="searchOrder" oninput="searchEmailOrder()"
+                placeholder="Nhập Email khách hàng">
+        </div>
         <table class="table table-boder mt-5">
             <thead class="text-center">
                 <tr>

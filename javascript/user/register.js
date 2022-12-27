@@ -59,10 +59,11 @@ function clickRegister() {
     if (checkForm()) {
         let objectUser = {
             id: (new Date()).getTime(),
+            image: "images/avtUser.png",
             email: inpEmail.value,
             password: inpPassword.value,
             status: "Đang hoạt động",
-            role: (inpEmail.value == "lehoang999113@gmail.com") ? "Admin" : "User",
+            role: (inpEmail.value == "kingbbq@gmail.com") ? "Admin" : "User",
         }
         let check = false;
         let listUserRegister = localStorage.getItem("listUserRegister");

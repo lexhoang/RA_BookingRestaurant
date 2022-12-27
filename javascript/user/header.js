@@ -58,6 +58,34 @@ function renderHeader() {
                         </div>
                     </div>
                 </nav>
+
+                <div class="modal fade" id="modalChangeImgUser" tabindex="-1" aria-labelledby="modalChangeImgUserLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modalChangeImgUserLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3 row">
+                                <div class="col-5" style="height: 180px;">
+                                    <img  id="imgUserBefore" src="" alt="ảnh người dùng" width="100%" height="100%"
+                                        style="object-fit:cover">
+                                </div>
+                                <div class="col-7">
+                                    <label for="editImgUser" class="form-label">Ảnh mới:</label>
+                                    <input type="file" class="form-control" id="editImgUser" onchange="readURL(this);"
+                                        oninput="renderImgUserChange()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="changeImgUser()">Lưu Thay Đổi</button>
+                        </div>
+                        </div>
+                    </div>
+                 </div>
             </div>
         `
     document.getElementById("header").innerHTML = header;
@@ -84,14 +112,18 @@ function renderLogin() {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;
+                            <img id="renderImgUser" class="renderImgUser" src="${getUser[0].image}"> &nbsp;
                                 <span style="font-size:12px; letter-spacing:5px">
                                     ${(getUser[0].role == "Admin") ? "ADMIN" : "CENSOR"}
                                 </span>
-                            </i>
+                            </img>
                         </a>
                         <ul class="dropdown-menu">
                             <li><p class="dropdown-item">${getUser[getUser.length - 1].email}</p></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="dropdown-item">
+                                <button type="button" class="btn btn-css w-100" style="color:#000" data-bs-toggle="modal" data-bs-target="#modalChangeImgUser">Thay ảnh</button>
+                            </li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-item">
                                 <a href="adminOrder.html" style="color:#000">Quản Lý</a>
@@ -117,10 +149,16 @@ function renderLogin() {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px; letter-spacing:5px">User</span></i>
+                            <img id="renderImgUser" class="renderImgUser" src="${getUser[0].image}"> &nbsp;
+                                <span style="font-size:12px; letter-spacing:5px">USER</span>
+                            </img>
                         </a>
                         <ul class="dropdown-menu">
                             <li><p class="dropdown-item">${getUser[getUser.length - 1].email}</p></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="dropdown-item">
+                                <button type="button" class="btn btn-css w-100" style="color:#000" data-bs-toggle="modal" data-bs-target="#modalChangeImgUser">Thay ảnh</button>
+                            </li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-item">
                                 <a href="changePassword.html">Đổi mật khẩu</a>
@@ -149,4 +187,40 @@ function logOut() {
         localStorage.removeItem("userLogin");
         window.location.reload();
     }
+}
+
+// THÊM FILE ẢNH MỚI
+document.getElementById("imgUserBefore").src = localStorage.getItem("imageUser")
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            // console.log("111", e.target.result);
+            localStorage.setItem("imageUser", e.target.result)
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function renderImgUserChange() {
+    setTimeout(() => {
+        document.getElementById("imgUserBefore").src = localStorage.getItem("imageUser");
+    }, 300)
+}
+
+// LƯU ẢNH THÂY ĐỔI
+function changeImgUser() {
+    let getUser = JSON.parse(localStorage.getItem("userLogin"));
+    let listUserRegister = JSON.parse(localStorage.getItem("listUserRegister"));
+    for (let i = 0; i < listUserRegister.length; i++) {
+        if (listUserRegister[i].email == getUser[0].email) {
+            listUserRegister[i].image = localStorage.getItem("imageUser");
+            getUser[0].image = localStorage.getItem("imageUser");
+            localStorage.setItem("userLogin", JSON.stringify(getUser));
+            localStorage.setItem("listUserRegister", JSON.stringify(listUserRegister));
+            window.location.reload();
+        }
+    }
+
 }

@@ -143,3 +143,15 @@ function deletePermissionUser(paramId) {
         }
     }
 }
+
+// TÌM KIẾM
+function searchEmailUser() {
+    let searchUser = []
+    let inpSearchUser = document.getElementById("searchUser").value;
+    for (let i = 0; i < listUserRegister.length; i++) {
+        if ((listUserRegister[i].email).toLowerCase().includes(inpSearchUser.toLowerCase()) == true) {
+            searchUser.push(listUserRegister[i])
+        }
+    }
+    renderTableUser(searchUser);
+}

@@ -165,3 +165,15 @@ function deleteMenu(paramId) {
         }
     }
 }
+
+// TÌM KIẾM
+function searchNameFood() {
+    let searchProduct = []
+    let inpSearchProduct = document.getElementById("searchProduct").value;
+    for (let i = 0; i < getListProducts.length; i++) {
+        if ((getListProducts[i].name).toLowerCase().includes(inpSearchProduct.toLowerCase()) == true) {
+            searchProduct.push(getListProducts[i])
+        }
+    }
+    renderTableMenu(searchProduct);
+}

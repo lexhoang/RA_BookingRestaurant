@@ -67,3 +67,15 @@ function deleteOrder(paramId) {
         }
     }
 }
+
+// TÌM KIẾM
+function searchEmailOrder() {
+    let searchOrder = []
+    let inpSearchOrder = document.getElementById("searchOrder").value;
+    for (let i = 0; i < getListBooking.length; i++) {
+        if ((getListBooking[i].email).toLowerCase().includes(inpSearchOrder.toLowerCase()) == true) {
+            searchOrder.push(getListBooking[i])
+        }
+    }
+    renderTableOrder(searchOrder);
+}

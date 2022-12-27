@@ -32,17 +32,20 @@ var setListProducts = localStorage.setItem("listProducts", JSON.stringify(allLis
 
 var getListProducts = JSON.parse(localStorage.getItem("listProducts"));
 var getReview = JSON.parse(localStorage.getItem("listReview"));
-
+var userLogin = JSON.parse(localStorage.getItem("userLogin"));
+if (userLogin == null) {
+    document.getElementById("formNote-feedback").style.display = "none";
+}
 const productName = document.getElementById("product-name");
 const productImg = document.getElementById("product-img");
 const productDescription = document.getElementById("product-description");
 const productPrice = document.getElementById("product-price");
 
-document.addEventListener("keydown", function (e) {
-    if (e.keyCode == "13") {
-        sendReview();
-    }
-});
+// document.addEventListener("keydown", function (e) {
+//     if (e.keyCode == "13") {
+//         sendReview();
+//     }
+// });
 
 function numberWithCommas(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
@@ -82,51 +85,188 @@ function detailProduct(paramId) {
 }
 
 /////////////////////       REVIEW         ////////////////////
-function renderReview(getReview) {
-    let renderReview = "";
+function renderCardReview(getReview) {
+    let renderCardReview = "";
     if (getReview == null) {
-        renderReview = "";
+        renderCardReview = "";
     } else {
         for (let i = 0; i < getReview.length; i++) {
-            renderReview += `
-                <div class="m-3 mt-5">
-                    <div>
-                        <img src="./images/avtUser.png" alt="" width="30px">
-                        <span>${getReview[i].user}</span>
-                    </div>
-                    <div class="mt-2">
-                        <div class="card bg-light mx-4 my-1">
-                            <div class="card-body">${getReview[i].review}</div>
+            if (getReview[i].type == "review") {
+                renderCardReview += `
+                <div class="col-lg-3 col-md-6 my-5 px-2">
+                    <div class="card card-review">
+                        <div class="card-review_img">
+                            <img src="${getReview[i].image}" alt="..." width="100%" height="100%">
+                        </div>
+                        <div class="card-body mt-3">
+                            <p class="card-title">${getReview[i].user}</p>
+                            <h5 class="mt-3 card-text">${getReview[i].review}</h5>
                         </div>
                     </div>
                 </div>
             `
+            }
         }
     }
-    document.getElementById("card-review").innerHTML = renderReview
+    document.getElementById("card-review").innerHTML = renderCardReview
 }
-renderReview(getReview);
+renderCardReview(getReview);
+
+
+function renderFormReview(getReview) {
+    let renderFormReview = "";
+
+    if (getReview == null) {
+        renderFormReview = "";
+    } else {
+        for (let i = 0; i < getReview.length; i++) {
+            if (getReview[i].type == "review") {
+                renderFormReview += `
+                <div class="bg-light p-3" style="margin-top:120px">
+                    <div class="row">
+                        <div class="col-10">
+                            <img src="${getReview[i].image}" class="renderImgUser" alt="">
+                            <span>${getReview[i].user}</span>
+                        </div>
+                        ${(userLogin != null) ?
+                        `${(userLogin[0].role != "User") ?
+                            `<div class="col-2 text-center">
+                                <button class="btn btn-danger" onclick="deleteReview(${getReview[i].id})">Xóa</button>
+                            </div>`
+                            : ""
+                        }`
+                        : ""
+                    }
+
+                    </div>
+                    <div class="mt-2">
+                            <div class="card mx-4 my-1 form-review">
+                                <div class="card-body">${getReview[i].review}</div>
+                            </div>
+                    </div>
+                    <div class="mt-2">
+
+                        <div class="mt-3" id="feedbackReview-${getReview[i].id}"> </div>
+                    </div>
+                </div>
+                    `
+            } else {
+                renderFormReview += `
+                <div class="bg-light" style="margin-left:100px">
+                    <div class="row">
+                        <div class="col-10">
+                            <img src="${getReview[i].image}" class="renderImgUser" alt="">
+                            <span>${getReview[i].user}</span>
+                        </div>
+                        ${(userLogin != null) ?
+                        `${(userLogin[0].role != "User") ?
+                            `<div class="col-2 text-center">
+                                    <button class="btn btn-danger" onclick="deleteReview(${getReview[i].id})">Xóa</button>
+                                </div>`
+                            : ""
+                        }`
+                        : ""
+                    }
+                    </div>
+                    <div class="mt-2">
+                            <div class="card mx-4 my-1 form-review">
+                                <div class="card-body">${getReview[i].review}</div>
+                            </div>
+                    </div>
+                    <div class="mt-2">
+
+                        <div class="mt-3" id="feedbackReview-${getReview[i].id}"> </div>
+                    </div>
+                </div>
+                    `
+            }
+        }
+    }
+    document.getElementById("form-review").innerHTML = renderFormReview
+}
+renderFormReview(getReview);
 
 function sendReview() {
     let noteReview = document.getElementById("noteReview");
-    let userLogin = JSON.parse(localStorage.getItem("userLogin"));
     let objectReview = {
         id: (new Date()).getTime(),
         user: userLogin[0].email,
-        review: noteReview.value
+        image: userLogin[0].image,
+        role: userLogin[0].role,
+        review: noteReview.value,
+        type: "review",
     }
 
     if (getReview == null) {
         getReview = [];
         getReview.push(objectReview);
         localStorage.setItem("listReview", JSON.stringify(getReview));
-        renderReview(getReview);
+        renderFormReview(getReview);
         noteReview.value = "";
     } else {
         getReview.push(objectReview);
         localStorage.setItem("listReview", JSON.stringify(getReview));
-        renderReview(getReview);
+        renderFormReview(getReview);
         noteReview.value = "";
     }
 }
 
+function deleteReview(paramId) {
+    for (let i = 0; i < getReview.length; i++) {
+        if (getReview[i].id == paramId) {
+            getReview.splice(i, 1);
+            localStorage.setItem("listReview", JSON.stringify(getReview));
+            renderFormReview(getReview);
+        }
+    }
+}
+
+// FEEDBACK
+function btnFeedback(paramId) {
+    console.log("click");
+    let renderFeedBackInp = "";
+    for (let i = 0; i < getReview.length; i++) {
+        if (getReview[i].id == paramId) {
+            renderFeedBackInp += `
+            <div class="m-2 mt-5 d-flex justify-content-around align-items-end">
+                <div style="width:85%">
+                    <textarea class="form-control" id="noteFeedbackReview-${paramId}" rows="5"
+                        placeholder="Hãy để lại cảm nhận của bạn về nhà hàng chúng tôi, cảm ơn bạn đã đến với nhà hàng!"></textarea>
+                </div>
+                <div style="width:10%">
+                    <button class=" btn btn-danger" onclick="sendFeedbackReview(${paramId})">
+                        <i class="fa-solid fa-paper-plane"></i> <span>Gửi</span>
+                    </button>
+                </div>
+            </div> `
+        }
+        document.getElementById(`feedbackReview-${getReview[i].id}`).innerHTML = renderFeedBackInp
+    }
+}
+
+function sendFeedbackReview(paramId) {
+    for (let i = 0; i < getReview.length; i++) {
+        if (getReview[i].id == paramId) {
+            let noteFeedbackReview = document.getElementById(`noteFeedbackReview-${paramId}`);
+            let objectReview = {
+                id: (new Date()).getTime(),
+                user: userLogin[0].email,
+                image: userLogin[0].image,
+                role: userLogin[0].role,
+                review: noteFeedbackReview.value,
+                type: "feedback",
+            }
+            console.log(paramId);
+            console.log(getReview[i].id);
+
+            getReview.splice(i + 1, 0, objectReview);
+            localStorage.setItem("listReview", JSON.stringify(getReview));
+            renderFormReview(getReview);
+            // noteFeedbackReview.value = "";
+            console.log("");
+            console.log(paramId);
+            console.log(getReview[i].id);
+
+        }
+    }
+}

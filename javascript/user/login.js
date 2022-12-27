@@ -101,16 +101,17 @@ function clickLogin() {
     let listUserRegister = JSON.parse(localStorage.getItem("listUserRegister"));
     //       KIỂM TRA XEM TÀI KHOẢN ĐÃ ĐƯƠC ĐĂNG KÝ CHƯA
     for (let i = 0; i < listUserRegister.length; i++) {
-        if (listUserRegister[i].email != inpEmail.value) {
+        if (listUserRegister[i].email !== inpEmail.value) {
             swal("Tài khoản không tồn tại", "", "error");
         }
-        else if (listUserRegister[i].password != inpPassword.value) {
+        else if (listUserRegister[i].password !== inpPassword.value) {
             swal("Mật khẩu không đúng", "", "error");
         }
-        else if (listUserRegister[i].status != "Đang hoạt động") {
+        else if (listUserRegister[i].status !== "Đang hoạt động") {
             swal("Tài khoản này đã bị vô hiệu hóa", "", "error");
         } else {
             let objectUser = {
+                image: listUserRegister[i].image,
                 email: inpEmail.value,
                 password: inpPassword.value,
                 role: listUserRegister[i].role,

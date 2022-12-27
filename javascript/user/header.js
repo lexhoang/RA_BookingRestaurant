@@ -78,19 +78,23 @@ function renderLogin() {
         `
         document.getElementById("login").innerHTML = renderUser;
     } else {
-        for (let i = 0; i < getUser.length; i++) {
-            if (getUser[i].email == "lehoang999113@gmail.com") {
-                renderUser = `
+        // for (let i = 0; i < getUser.length; i++) {
+        if (getUser[0].role != "User") {
+            renderUser = `
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px; letter-spacing:5px">ADMIN</span></i>
+                            <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;
+                                <span style="font-size:12px; letter-spacing:5px">
+                                    ${(getUser[0].role == "Admin") ? "ADMIN" : "CENSOR"}
+                                </span>
+                            </i>
                         </a>
                         <ul class="dropdown-menu">
                             <li><p class="dropdown-item">${getUser[getUser.length - 1].email}</p></li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-item">
-                                <a href="adminOrder.html" style="color:#000">Admin Page</a>
+                                <a href="adminOrder.html" style="color:#000">Quản Lý</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-item">
@@ -106,10 +110,10 @@ function renderLogin() {
                     </li>
                 </ul>
             `
-                document.getElementById("login").innerHTML = renderUser;
-            }
-            else {
-                renderUser = `
+            document.getElementById("login").innerHTML = renderUser;
+        }
+        else {
+            renderUser = `
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -130,9 +134,9 @@ function renderLogin() {
                     </li>
                 </ul>
             `
-                document.getElementById("login").innerHTML = renderUser;
-            }
+            document.getElementById("login").innerHTML = renderUser;
         }
+        // }
     }
 }
 renderLogin();

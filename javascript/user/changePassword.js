@@ -7,7 +7,7 @@ function onloadForm() {
                 <hr>
                 <div class="form-group">
                     <label for="email"><b>Email</b></label>
-                    <input type="text" class="form-control" id="inp-email" placeholder="Enter Email" name="email" required>
+                    <input type="text" class="form-control" id="inp-email" placeholder="Enter Email" name="email" disabled>
                 </div>
 
                 <div class="form-group mt-4">
@@ -32,6 +32,12 @@ function onloadForm() {
 onloadForm();
 
 const inpEmail = document.getElementById("inp-email");
+var listUserLogin = JSON.parse(localStorage.getItem("userLogin"));
+if (listUserLogin != null) {
+    for (let i = 0; i < listUserLogin.length; i++) {
+        inpEmail.value = listUserLogin[i].email;
+    }
+}
 const inpPassword = document.getElementById("inp-password");
 const btnPassword = document.getElementById("btn-password");
 const inpNewPassword = document.getElementById("inp-newPassword");

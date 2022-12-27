@@ -38,6 +38,11 @@ const productImg = document.getElementById("product-img");
 const productDescription = document.getElementById("product-description");
 const productPrice = document.getElementById("product-price");
 
+document.addEventListener("keydown", function (e) {
+    if (e.keyCode == "13") {
+        sendReview();
+    }
+});
 
 function numberWithCommas(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
@@ -79,20 +84,24 @@ function detailProduct(paramId) {
 /////////////////////       REVIEW         ////////////////////
 function renderReview(getReview) {
     let renderReview = "";
-    for (let i = 0; i < getReview.length; i++) {
-        renderReview += `
-            <div class="m-3 mt-5">
-                <div>
-                    <img src="./images/avtUser.png" alt="" width="30px">
-                    <span>${getReview[i].user}</span>
-                </div>
-                <div class="mt-2">
-                    <div class="card bg-light mx-4 my-1">
-                        <div class="card-body">${getReview[i].review}</div>
+    if (getReview == null) {
+        renderReview = "";
+    } else {
+        for (let i = 0; i < getReview.length; i++) {
+            renderReview += `
+                <div class="m-3 mt-5">
+                    <div>
+                        <img src="./images/avtUser.png" alt="" width="30px">
+                        <span>${getReview[i].user}</span>
+                    </div>
+                    <div class="mt-2">
+                        <div class="card bg-light mx-4 my-1">
+                            <div class="card-body">${getReview[i].review}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `
+            `
+        }
     }
     document.getElementById("card-review").innerHTML = renderReview
 }
@@ -102,6 +111,7 @@ function sendReview() {
     let noteReview = document.getElementById("noteReview");
     let userLogin = JSON.parse(localStorage.getItem("userLogin"));
     let objectReview = {
+        id: (new Date()).getTime(),
         user: userLogin[0].email,
         review: noteReview.value
     }

@@ -14,8 +14,11 @@ const orderDetailNote = document.getElementById('orderDetailNote');
 function renderTableOrder(getListBooking) {
     let renderTableOrder = "";
 
-    for (let i = 0; i < getListBooking.length; i++) {
-        renderTableOrder += `
+    if (getListBooking == null) {
+        renderTableOrder = ""
+    } else {
+        for (let i = 0; i < getListBooking.length; i++) {
+            renderTableOrder += `
                 <tr>
                     <td>${getListBooking[i].name}</td>
                     <td>${getListBooking[i].email}</td>
@@ -31,6 +34,7 @@ function renderTableOrder(getListBooking) {
                     </td>
                 </tr>
              `
+        }
     }
     document.querySelector("tbody").innerHTML = renderTableOrder;
 }

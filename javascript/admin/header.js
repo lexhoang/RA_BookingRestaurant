@@ -15,9 +15,7 @@ function myScroll() {
 function renderHeader() {
     let header = "";
     let getUser = JSON.parse(localStorage.getItem("userLogin"));
-    for (let i = 0; i < getUser.length; i++) {
-        if (getUser[i].email == "lehoang999113@gmail.com") {
-            header += `
+    header = `
             <div style="margin-bottom:71px">
                 <nav id="header-navbar" class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark"
                     style="transition:calc(0.5s)">
@@ -56,13 +54,16 @@ function renderHeader() {
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;<span style="font-size:12px; letter-spacing:5px">ADMIN</span></i>
+                                                <i class="fa-solid fa-user" style="font-size:28px;"> &nbsp;
+                                                <span style="font-size:12px; letter-spacing:5px">
+                                                    ${(getUser[0].role == "Admin") ? "ADMIN" : "CENSOR"}
+                                                </span></i>
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li><p class="dropdown-item">${getUser[getUser.length - 1].email}</p></li>
                                                 <li><hr class="dropdown-divider"></li>
                                                 <li class="dropdown-item">
-                                                    <a href="adminOrder.html" style="color:#000">Admin Page</a>
+                                                    <a href="adminOrder.html" style="color:#000">Quản Lý</a>
                                                 </li>
                                                 <li><hr class="dropdown-divider"></li>
                                                 <li class="dropdown-item">
@@ -85,8 +86,6 @@ function renderHeader() {
                 </nav>
             </div>
         `
-        }
-    }
     document.getElementById("header").innerHTML = header;
 }
 renderHeader();

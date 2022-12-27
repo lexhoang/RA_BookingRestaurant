@@ -17,33 +17,36 @@ function numberWithCommas(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 }
 
-function renderTableOrder(getListProducts) {
-    let renderTableOrder = "";
+function renderTableMenu(getListProducts) {
+    let renderTableMenu = "";
+    if (getListProducts == null) {
+        renderTableMenu = ""
+    } else {
+        for (let i = 0; i < getListProducts.length; i++) {
+            renderTableMenu += `
+            <tr>
+                <td>${getListProducts[i].id}</td>
+                <td>
+                    <img src="${getListProducts[i].image}" style="width:100px; height:100px"/>
+                </td>
+                <td>${getListProducts[i].name}</td>
+                <td>${numberWithCommas(getListProducts[i].price)} VNĐ</td>
 
-    for (let i = 0; i < getListProducts.length; i++) {
-        renderTableOrder += `
-                <tr>
-                    <td>${getListProducts[i].id}</td>
-                    <td>
-                        <img src="${getListProducts[i].image}" style="width:100px; height:100px"/>
-                    </td>
-                    <td>${getListProducts[i].name}</td>
-                    <td>${numberWithCommas(getListProducts[i].price)} VNĐ</td>
+                <td>
+                    <button class="btn btn-info w-100" data-bs-toggle="modal" data-bs-target="#modalDetail" onclick="detailMenu(${getListProducts[i].id})">Chi tiết</button>
+                </td>
+                <td class="btn-group w-100">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditFood" onclick="editMenu(${getListProducts[i].id})"><i class="fa-solid fa-pen-to-square"></i></button>
 
-                    <td>
-                        <button class="btn btn-info w-100" data-bs-toggle="modal" data-bs-target="#modalDetail" onclick="detailMenu(${getListProducts[i].id})">Chi tiết</button>
-                    </td>
-                    <td class="btn-group w-100">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditFood" onclick="editMenu(${getListProducts[i].id})"><i class="fa-solid fa-pen-to-square"></i></button>
-
-                        <button class="btn btn-danger" onclick="deleteMenu(${getListProducts[i].id})"><i class="fa-solid fa-trash"></i></button>
-                     </td>
-                </tr>
-             `
+                    <button class="btn btn-danger" onclick="deleteMenu(${getListProducts[i].id})"><i class="fa-solid fa-trash"></i></button>
+                 </td>
+            </tr>
+        `
+        }
     }
-    document.querySelector("tbody").innerHTML = renderTableOrder;
+    document.querySelector("tbody").innerHTML = renderTableMenu;
 }
-renderTableOrder(getListProducts);
+renderTableMenu(getListProducts);
 
 
 
@@ -78,7 +81,7 @@ function addNewProduct() {
     }
     getListProducts.push(objectProduct);
     localStorage.setItem("listProducts", JSON.stringify(getListProducts));
-    renderTableOrder(getListProducts);
+    renderTableMenu(getListProducts);
     swal("Thêm món ăn thành công", "", "success")
 
     addImgFood.value = "";
@@ -142,7 +145,7 @@ function saveEditProduct() {
             getListProducts[i].description = editDescriptionFood.value;
             getListProducts[i].price = editPriceFood.value;
             localStorage.setItem("listProducts", JSON.stringify(getListProducts));
-            renderTableOrder(getListProducts);
+            renderTableMenu(getListProducts);
 
             swal("Sửa món ăn thành công", "", "success")
         }
@@ -157,7 +160,7 @@ function deleteMenu(paramId) {
         if (getListProducts[i].id == paramId) {
             getListProducts.splice(i, 1);
             localStorage.setItem("listProducts", JSON.stringify(getListProducts));
-            renderTableOrder(getListProducts);
+            renderTableMenu(getListProducts);
             swal("Xóa món ăn thành công", "", "success")
         }
     }

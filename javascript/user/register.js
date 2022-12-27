@@ -1,5 +1,4 @@
 function onloadForm() {
-    let contentForm = document.getElementById("register-form");
     let renderForm = `
         <div class="bg-form col-lg-4 col-md-6 col-sm-10 mx-auto p-5">
             <div class="btn-group w-100">
@@ -34,7 +33,7 @@ function onloadForm() {
             <button id="btn-submit" onclick="clickRegister()" class="mt-4 btn-css w-100">ĐĂNG KÝ</button>
         </div>
     `
-    contentForm.innerHTML += renderForm;
+    document.getElementById("register-form").innerHTML = renderForm;
 }
 onloadForm();
 
@@ -62,7 +61,8 @@ function clickRegister() {
             id: (new Date()).getTime(),
             email: inpEmail.value,
             password: inpPassword.value,
-            status: "Đang hoạt động"
+            status: "Đang hoạt động",
+            role: (inpEmail.value == "lehoang999113@gmail.com") ? "Admin" : "User",
         }
         let check = false;
         let listUserRegister = localStorage.getItem("listUserRegister");

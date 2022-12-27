@@ -1,6 +1,5 @@
 function onloadForm() {
-    let renderForm = "";
-    renderForm += `
+    let renderForm = `
         <div class="animate__animated animate__fadeInDown" >
             <div class="bg-form col-lg-4 col-md-6 col-sm-10 mx-auto p-5">
                 <div class="btn-group w-100">
@@ -53,7 +52,6 @@ function onloadForm() {
     `
     document.getElementById("login-form").innerHTML = renderForm;
 }
-
 onloadForm();
 
 
@@ -98,28 +96,36 @@ document.addEventListener("keydown", function (e) {
 
 
 //NÚT SUBMIT
- function clickLogin() {
-    let listUserLogin = JSON.parse(localStorage.getItem("userLogin"))
-    let objectUser = {
-        email: inpEmail.value,
-        password: inpPassword.value,
-    }
-    if (checkForm()) {
-        if (listUserLogin == null) {
-            listUserLogin = []
-            listUserLogin.push(objectUser)
-            localStorage.setItem("userLogin", JSON.stringify(listUserLogin));
-            window.location.href = "index.html";
-        } else {
-            listUserLogin.push(objectUser)
-            localStorage.setItem("userLogin", JSON.stringify(listUserLogin));
-            window.location.href = "index.html";
+function clickLogin() {
+    let listUserLogin = JSON.parse(localStorage.getItem("userLogin"));
+    let listUserRegister = JSON.parse(localStorage.getItem("listUserRegister"));
+    //       KIỂM TRA XEM TÀI KHOẢN ĐÃ ĐƯƠC ĐĂNG KÝ CHƯA
+    for (let i = 0; i < listUserRegister.length; i++) {
+        if (listUserRegister[i].email != inpEmail.value) {
+            swal("Tài khoản không tồn tại", "", "error");
         }
-    } else {
-        errorCheck.innerHTML = "Email hoặc mật khẩu không đúng";
-        errorCheck.style.color = "red";
-        console.error("Email hoặc mật khẩu không đúng");
-        swal("Email hoặc mật khẩu không đúng", "", "error");
+        else if (listUserRegister[i].password != inpPassword.value) {
+            swal("Mật khẩu không đúng", "", "error");
+        }
+        else if (listUserRegister[i].status != "Đang hoạt động") {
+            swal("Tài khoản này đã bị vô hiệu hóa", "", "error");
+        } else {
+            let objectUser = {
+                email: inpEmail.value,
+                password: inpPassword.value,
+                role: listUserRegister[i].role,
+            }
+            if (listUserLogin == null) {
+                listUserLogin = []
+                listUserLogin.push(objectUser)
+                localStorage.setItem("userLogin", JSON.stringify(listUserLogin));
+                window.location.href = "index.html";
+            } else {
+                listUserLogin.push(objectUser)
+                localStorage.setItem("userLogin", JSON.stringify(listUserLogin));
+                window.location.href = "index.html";
+            }
+        }
     }
 }
 

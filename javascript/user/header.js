@@ -15,7 +15,7 @@ function myScroll() {
 function renderHeader() {
     let header = "";
     header += `
-            <div style="margin-bottom:71px">
+            <div id="margin-header">
                 <nav id="header-navbar" class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark" style="transition:calc(0.5s)">
                     <div class="container-fluid">
                         <div class="col-3">
@@ -225,12 +225,15 @@ function changeImgUser() {
 
 }
 
-function abc() {
-    let headerNavbar = document.getElementById("header-navbar")
+function checkHeader() {
+    let headerNavbar = document.getElementById("header-navbar");
+    let marginHeader = document.getElementById("margin-header");
     if (window.innerWidth <= 600) {
         headerNavbar.classList.remove("fixed-top");
+        marginHeader.style.marginBottom = "0px";
     } else {
         headerNavbar.classList.add("fixed-top");
+        marginHeader.style.marginBottom = "71px";
     }
 }
-abc();
+checkHeader();

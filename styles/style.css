@@ -120,9 +120,13 @@ a {
 }
 
 .card-review_img {
-    width: 100%;
+    width: 90%;
     height: 50%;
-    margin: 0 auto;
+    margin: 10px auto;
+}
+
+.card-review_img img {
+    border-radius: 50%;
 }
 
 .btn-feedback:hover {
@@ -139,4 +143,15 @@ footer .btn-floating {
 
 footer .btn-floating i {
     line-height: 35px;
+}
+
+.link-footer {
+    color: #efbd71;
+    text-decoration: underline;
+    font-weight: 900;
+}
+
+.link-footer:hover {
+    color: #c59d5f;
+    font-weight: 700;
 }

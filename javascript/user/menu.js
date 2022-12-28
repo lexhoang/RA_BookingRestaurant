@@ -26,6 +26,34 @@ const allListProducts = [
         name: "LÕI RÙA TRẦN",
         description: "Gắp một gắp lõi rùa, chấm tí mắm gừng mằn mặn cho vào miệng, vị giòn, ngọt, sừn sựt rồi mùi thơm nồng của sả, gừng lan tỏa khiến món ăn trở nên tuyệt hảo không ngờ, ăn hoài không ngán.",
         price: 250000
+    },
+    {
+        id: 5,
+        image: "./images/product5.png",
+        name: "NGHÉ CHIÊN GIÒN",
+        description: "Nghé chiên Thái Lan – hương vị mùa hè. Món tủ Nghé sốt Thái Lan nhà Nghé Phú Viên được chế biến với phong cách hoàn toàn mới để món ăn được đậm đà, hấp dẫn.",
+        price: 220000
+    },
+    {
+        id: 6,
+        image: "./images/product6.png",
+        name: "NGHÉ CHAO DẦU",
+        description: "Thưởng thức nghé chao dầu, người ăn sẽ cảm nhận được hương vị nguyên sơ của núi rừng.",
+        price: 190000
+    },
+    {
+        id: 7,
+        image: "./images/product7.png",
+        name: "BÒ KOBE NƯỚNG",
+        description: "200gr bò Kobe Mỹ nướng áp chảo ăn kèm xiên rau củ cùng các sốt lựa chọn và đồ ăn kèm.",
+        price: 495000
+    },
+    {
+        id: 8,
+        image: "./images/product8.png",
+        name: "BÒ MỸ STRIPLOIN",
+        description: "200gr Ribeye bò Mỹ Prime nướng ăn kèm xiên rau củ, lựa chọn các loại sốt và khoai ăn kèm.",
+        price: 445000
     }
 ]
 var setListProducts = localStorage.setItem("listProducts", JSON.stringify(allListProducts));
@@ -55,9 +83,11 @@ function renderProduct() {
     let renderProduct = "";
     for (let i = 0; i < getListProducts.length; i++) {
         renderProduct += `
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="card card-product" style="width: 100%;">
-                    <img src="${getListProducts[i].image}" class="card-img-top" alt="..." width="100%">
+                    <div style="width: 100%; height:240px">
+                        <img src="${getListProducts[i].image}" class="card-img-top" alt="..." width="100%"; height="100%">
+                    </div>
 
                     <div class="card-body card-product_body text-center">
                         <p class="card-text card-name">${getListProducts[i].name}</p>
@@ -93,7 +123,7 @@ function renderCardReview(getReview) {
         for (let i = 0; i < getReview.length; i++) {
             if (getReview[i].type == "review") {
                 renderCardReview += `
-                <div class="col-lg-3 col-md-6 my-5 px-2">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 my-5 px-2">
                     <div class="card card-review">
                         <div class="card-review_img">
                             <img src="${getReview[i].image}" alt="..." width="100%" height="100%">

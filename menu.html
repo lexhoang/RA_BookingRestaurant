@@ -42,70 +42,73 @@
         <div class="row" id="menu">
         </div>
 
-        <marquee class="marquee" direction="left" class="marquee">
+        <marquee class="marquee" direction="left">
             Hãy để lại cảm nhận của bạn về nhà hàng của chúng tôi!
         </marquee>
 
         <h2 class="text-center" style="margin-top:200px">Khách hàng Feedback</h2>
-        <div class="row" id="card-review">
+        <!-- <marquee  direction="left"> -->
+            <div class="row" id="card-review">
+        <!-- </marquee> -->
 
-        </div>
+    </div>
 
-        <div class="col-10">
+    <div class="col-10">
 
-        </div>
-        <!-- MODAL DETAIL -->
-        <div class="modal modal-lg fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="card-name" style="flex:9; text-align:center" id="product-name"></h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+    </div>
+    <!-- MODAL DETAIL -->
+    <div class="modal modal-lg fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="card-name" style="flex:9; text-align:center" id="product-name"></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                                <img id="product-img" src="" class="card-img-top" alt="..." width="100%">
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <p id="product-description"></p>
-                                <hr>
-                                <h3 id="product-price" class="text-center text-danger mt-5 fw-bold"></h3>
-                            </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <img id="product-img" src="" class="card-img-top" alt="..." width="100%">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <p id="product-description"></p>
+                            <hr>
+                            <h3 id="product-price" class="text-center text-danger mt-5 fw-bold"></h3>
                         </div>
                     </div>
+                </div>
 
-                    <div class="modal-footer">
-                        <button class="btn w-25 btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a href="booking.html" class="btn w-50 btn-css" style="background-color:#c59d5f; color:#fff">
-                            ĐẶT BÀN
-                        </a>
-                    </div>
+                <div class="modal-footer">
+                    <button class="btn w-25 btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="booking.html" class="btn w-50 btn-css" style="background-color:#c59d5f; color:#fff">
+                        ĐẶT BÀN
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REVIEW -->
+    <div class="col-10 border rounded mx-auto bg-light" style="margin-top:150px">
+        <h2 class="text-center mt-4">Cảm Nhận Của Khách Hàng</h2>
+        <div id="formNote-feedback">
+            <div class="m-2 mt-5 d-flex justify-content-around align-items-end">
+                <div style="width:85%">
+                    <textarea class="form-control" id="noteReview" rows="5"
+                        placeholder="Hãy để lại cảm nhận của bạn về nhà hàng chúng tôi, cảm ơn bạn đã đến với nhà hàng!"></textarea>
+                </div>
+                <div style="width:10%">
+                    <button class=" btn btn-danger" onclick="sendReview()">
+                        <i class="fa-solid fa-paper-plane"></i> <span>Gửi</span>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- REVIEW -->
-        <div class="col-10 border rounded mx-auto bg-light" style="margin-top:150px">
-            <h2 class="text-center mt-4">Cảm Nhận Của Khách Hàng</h2>
-            <div id="formNote-feedback">
-                <div class="m-2 mt-5 d-flex justify-content-around align-items-end">
-                    <div style="width:85%">
-                        <textarea class="form-control" id="noteReview" rows="5"
-                            placeholder="Hãy để lại cảm nhận của bạn về nhà hàng chúng tôi, cảm ơn bạn đã đến với nhà hàng!"></textarea>
-                    </div>
-                    <div style="width:10%">
-                        <button class=" btn btn-danger" onclick="sendReview()">
-                            <i class="fa-solid fa-paper-plane"></i> <span>Gửi</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <div id="form-review"></div>
-        </div>
+        <div id="form-review"></div>
+    </div>
     </div>
 
 

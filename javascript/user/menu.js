@@ -1,62 +1,62 @@
-const allListProducts = [
-    {
-        id: 1,
-        image: "./images/product1.png",
-        name: "BÒ BÍT TẾT",
-        description: "Bò Bít tết là món ăn được đông đảo thực Khách thưởng thức khi tới nhà nghé Phú Viên. Đây là món ăn giàu dinh dưỡng, dễ ăn và không bị ngán ăn kèm cùng các loại rau củ và khoai tây chiên.Món ăn này trẻ em hay người lớn đều ưa thích bởi hương vị hấp dẫn kích thích vị giác.",
-        price: 220000
-    },
-    {
-        id: 2,
-        image: "./images/product2.png",
-        name: "BÒ CHIÊN BƠ TỎI",
-        description: "Rất nhiều thực khách đã “phải lòng” rồi say như điếu đổ với món nghé chiên vị tỏi của nhà hàng Nghé Phú Viên. Vị ngọt mềm, độ giòn, pha lẫn vị bùi bùi của tỏi đã trở thành đặc trưng hút hồn thực khách của món ăn này.",
-        price: 220000
-    },
-    {
-        id: 3,
-        image: "./images/product3.png",
-        name: "BÒ LÚC LẮC",
-        description: "Giữa tiết trời se lạnh khi được thưởng thức món nghé lúc lắc ngọt, mềm thơm kết hợp cùng ớt chuông xanh Đà Lạt được rưới nước sốt xì dầu đậm đà chắc hẳn bạn sẽ cảm thấy vô cùng tuyệt vời.",
-        price: 220000
-    },
-    {
-        id: 4,
-        image: "./images/product4.png",
-        name: "LÕI RÙA TRẦN",
-        description: "Gắp một gắp lõi rùa, chấm tí mắm gừng mằn mặn cho vào miệng, vị giòn, ngọt, sừn sựt rồi mùi thơm nồng của sả, gừng lan tỏa khiến món ăn trở nên tuyệt hảo không ngờ, ăn hoài không ngán.",
-        price: 250000
-    },
-    {
-        id: 5,
-        image: "./images/product5.png",
-        name: "NGHÉ CHIÊN GIÒN",
-        description: "Nghé chiên Thái Lan – hương vị mùa hè. Món tủ Nghé sốt Thái Lan nhà Nghé Phú Viên được chế biến với phong cách hoàn toàn mới để món ăn được đậm đà, hấp dẫn.",
-        price: 220000
-    },
-    {
-        id: 6,
-        image: "./images/product6.png",
-        name: "NGHÉ CHAO DẦU",
-        description: "Thưởng thức nghé chao dầu, người ăn sẽ cảm nhận được hương vị nguyên sơ của núi rừng.",
-        price: 190000
-    },
-    {
-        id: 7,
-        image: "./images/product7.png",
-        name: "BÒ KOBE NƯỚNG",
-        description: "200gr bò Kobe Mỹ nướng áp chảo ăn kèm xiên rau củ cùng các sốt lựa chọn và đồ ăn kèm.",
-        price: 495000
-    },
-    {
-        id: 8,
-        image: "./images/product8.png",
-        name: "BÒ MỸ STRIPLOIN",
-        description: "200gr Ribeye bò Mỹ Prime nướng ăn kèm xiên rau củ, lựa chọn các loại sốt và khoai ăn kèm.",
-        price: 445000
-    }
-]
-var setListProducts = localStorage.setItem("listProducts", JSON.stringify(allListProducts));
+// const allListProducts = [
+//     {
+//         id: 1,
+//         image: "./images/product1.png",
+//         name: "BÒ BÍT TẾT",
+//         description: "Bò Bít tết là món ăn được đông đảo thực Khách thưởng thức khi tới nhà nghé Phú Viên. Đây là món ăn giàu dinh dưỡng, dễ ăn và không bị ngán ăn kèm cùng các loại rau củ và khoai tây chiên.Món ăn này trẻ em hay người lớn đều ưa thích bởi hương vị hấp dẫn kích thích vị giác.",
+//         price: 220000
+//     },
+//     {
+//         id: 2,
+//         image: "./images/product2.png",
+//         name: "BÒ CHIÊN BƠ TỎI",
+//         description: "Rất nhiều thực khách đã “phải lòng” rồi say như điếu đổ với món nghé chiên vị tỏi của nhà hàng Nghé Phú Viên. Vị ngọt mềm, độ giòn, pha lẫn vị bùi bùi của tỏi đã trở thành đặc trưng hút hồn thực khách của món ăn này.",
+//         price: 220000
+//     },
+//     {
+//         id: 3,
+//         image: "./images/product3.png",
+//         name: "BÒ LÚC LẮC",
+//         description: "Giữa tiết trời se lạnh khi được thưởng thức món nghé lúc lắc ngọt, mềm thơm kết hợp cùng ớt chuông xanh Đà Lạt được rưới nước sốt xì dầu đậm đà chắc hẳn bạn sẽ cảm thấy vô cùng tuyệt vời.",
+//         price: 220000
+//     },
+//     {
+//         id: 4,
+//         image: "./images/product4.png",
+//         name: "LÕI RÙA TRẦN",
+//         description: "Gắp một gắp lõi rùa, chấm tí mắm gừng mằn mặn cho vào miệng, vị giòn, ngọt, sừn sựt rồi mùi thơm nồng của sả, gừng lan tỏa khiến món ăn trở nên tuyệt hảo không ngờ, ăn hoài không ngán.",
+//         price: 250000
+//     },
+//     {
+//         id: 5,
+//         image: "./images/product5.png",
+//         name: "NGHÉ CHIÊN GIÒN",
+//         description: "Nghé chiên Thái Lan – hương vị mùa hè. Món tủ Nghé sốt Thái Lan nhà Nghé Phú Viên được chế biến với phong cách hoàn toàn mới để món ăn được đậm đà, hấp dẫn.",
+//         price: 220000
+//     },
+//     {
+//         id: 6,
+//         image: "./images/product6.png",
+//         name: "NGHÉ CHAO DẦU",
+//         description: "Thưởng thức nghé chao dầu, người ăn sẽ cảm nhận được hương vị nguyên sơ của núi rừng.",
+//         price: 190000
+//     },
+//     {
+//         id: 7,
+//         image: "./images/product7.png",
+//         name: "BÒ KOBE NƯỚNG",
+//         description: "200gr bò Kobe Mỹ nướng áp chảo ăn kèm xiên rau củ cùng các sốt lựa chọn và đồ ăn kèm.",
+//         price: 495000
+//     },
+//     {
+//         id: 8,
+//         image: "./images/product8.png",
+//         name: "BÒ MỸ STRIPLOIN",
+//         description: "200gr Ribeye bò Mỹ Prime nướng ăn kèm xiên rau củ, lựa chọn các loại sốt và khoai ăn kèm.",
+//         price: 445000
+//     }
+// ]
+// var setListProducts = localStorage.setItem("listProducts", JSON.stringify(allListProducts));
 
 var getListProducts = JSON.parse(localStorage.getItem("listProducts"));
 var getReview = JSON.parse(localStorage.getItem("listReview"));

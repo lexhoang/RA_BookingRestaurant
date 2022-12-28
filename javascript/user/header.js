@@ -224,3 +224,13 @@ function changeImgUser() {
     }
 
 }
+
+function abc() {
+    let headerNavbar = document.getElementById("header-navbar")
+    if (window.innerWidth <= 600) {
+        headerNavbar.classList.remove("fixed-top");
+    } else {
+        headerNavbar.classList.add("fixed-top");
+    }
+}
+abc();

@@ -38,7 +38,7 @@
         </marquee>
 
 
-        <h2 class="text-center mt-5" style="letter-spacing:3px">Quản Lý Khách Đặt Bàn</h2>
+        <h2 class="text-center mt-5" style="letter-spacing:3px">Quản Lý Thực Đơn</h2>
         <div class="text-center mx-auto mt-5">
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAddFood">
                 <i class="fa-solid fa-plus"></i> THÊM MÓN ĂN
@@ -95,7 +95,8 @@
                                 </div>
                                 <div class="col-md-4 col-sm-12">
                                     <label for="addPriceFood" class="form-label">Thêm giá tiền:</label>
-                                    <input type="number" class="form-control" id="addPriceFood">
+                                    <input type="number" class="form-control" id="addPriceFood"
+                                        onchange="checkPriceAdd()">
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -173,7 +174,8 @@
                                 </div>
                                 <div class="col-md-4 col-sm-12">
                                     <label for="editPriceFood" class="form-label">Sửa giá tiền:</label>
-                                    <input type="number" class="form-control" id="editPriceFood">
+                                    <input type="number" class="form-control" id="editPriceFood"
+                                        onchange="checkPriceEdit()">
                                 </div>
                             </div>
                             <div class="my-4">

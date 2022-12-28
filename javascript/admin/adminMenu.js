@@ -177,3 +177,16 @@ function searchNameFood() {
     }
     renderTableMenu(searchProduct);
 }
+
+
+function checkPriceAdd() {
+    if (addPriceFood.value < 100 || isNaN(addPriceFood.value)) {
+        swal("Giá tiền không hợp lệ", "", "error");
+    }
+}
+
+function checkPriceEdit() {
+    if (editPriceFood.value < 100 || isNaN(editPriceFood.value)) {
+        swal("Giá tiền không hợp lệ", "", "error");
+    }
+}

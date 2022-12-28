@@ -149,9 +149,9 @@ footer .btn-floating i {
     color: #efbd71;
     text-decoration: underline;
     font-weight: 900;
+    transition: calc(0.3s);
 }
 
 .link-footer:hover {
     color: #c59d5f;
-    font-weight: 700;
 }

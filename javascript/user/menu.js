@@ -83,9 +83,9 @@ function renderProduct() {
     let renderProduct = "";
     for (let i = 0; i < getListProducts.length; i++) {
         renderProduct += `
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                 <div class="card card-product" style="width: 100%;">
-                    <div style="width: 100%; height:240px">
+                    <div style="width: 100%; height:250px">
                         <img src="${getListProducts[i].image}" class="card-img-top" alt="..." width="100%"; height="100%">
                     </div>
 

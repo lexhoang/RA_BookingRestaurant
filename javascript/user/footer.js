@@ -1,7 +1,7 @@
 function renderFooter() {
         let renderFooter = `
         <footer class="bg-danger text-center text-white mt-5">
-                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                <div class="text-center p-3">
                         <p>Copyright © 2022 <a class="link-footer" href="index.html">King BBQ</a> All right reserved.
                         <a class="link-footer" href="tel:0822103199">Hotline: 0822103199 - King BBQ</a>
                         thành viên thuộc Công ty Cổ Phần Ẩm Thực Mặt Trời Vàng
@@ -17,7 +17,7 @@ function renderFooter() {
                         <p>Chính sách bảo mật</p>
                 </div>
 
-                <div class="container p-2">
+                <div class="p-2"  style="background-color: rgba(0, 0, 0, 0.2);">
                         <section>
                                 <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="#!" role="button"><i
                                         class="fab fa-facebook-f"></i></a>

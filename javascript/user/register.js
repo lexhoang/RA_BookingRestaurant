@@ -17,6 +17,7 @@ function onloadForm() {
 
             <div class="form-group mt-4">
                 <label for="password"><b>Password</b></label>
+                <p style="color:rgb(0, 249, 0); opacity:0.7"> *Require a-z, A-Z, 0-9, and length 8-15</p>
                 <div id="notePassword"></div>
                 <input type="password" class="form-control" id="inp-password" placeholder="Enter Password"
                     name="password" required oninput="checkPassword()">

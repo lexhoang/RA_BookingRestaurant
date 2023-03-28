@@ -95,7 +95,7 @@ function clickRegister() {
                 console.log("Đăng ký thành công");
                 swal("Tạo tài khoản thành công", "Hãy đăng nhập để sử dụng dịch vụ của chúng tôi", "success")
                     .then(() => {
-                        window.location.href = "index.html"
+                        window.location.href = "loginForm.html"
                     })
             } else {
                 console.log("Trùng email");

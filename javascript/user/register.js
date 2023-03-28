@@ -64,7 +64,7 @@ function clickRegister() {
             email: inpEmail.value,
             password: inpPassword.value,
             status: "Đang hoạt động",
-            role: (inpEmail.value == "kingbbq@gmail.com") ? "Admin" : "User",
+            role: (inpEmail.value == "admin@gmail.com") ? "Admin" : "User",
         }
         let check = false;
         let listUserRegister = localStorage.getItem("listUserRegister");

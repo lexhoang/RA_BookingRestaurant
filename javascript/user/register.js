@@ -78,7 +78,7 @@ function clickRegister() {
             console.log("Đăng ký thành công");
             swal("Tạo tài khoản thành công", "Hãy đăng nhập để sử dụng dịch vụ của chúng tôi", "success")
                 .then(() => {
-                    window.location.href = "loginForm.html"
+                    window.location.href = "index.html"
                 })
         } else {
             listUserRegister = JSON.parse(listUserRegister);
@@ -95,7 +95,7 @@ function clickRegister() {
                 console.log("Đăng ký thành công");
                 swal("Tạo tài khoản thành công", "Hãy đăng nhập để sử dụng dịch vụ của chúng tôi", "success")
                     .then(() => {
-                        window.location.href = "loginForm.html"
+                        window.location.href = "index.html"
                     })
             } else {
                 console.log("Trùng email");

@@ -6,12 +6,12 @@ function onloadForm() {
 
             <a href="loginForm.html" class="btn btn-dark">LOGIN</a>
             </div>
-            <h3 class="text-center text-light mt-5">FORM REGISTER</h3>
+            <h3 class="text-center text-light mt-5">ĐĂNG KÝ TÀI KHOẢN</h3>
             <hr>
             <div class="form-group">
                 <label for="email"><b>Email</b></label>
                 <div id="noteEmail"></div>
-                <input type="text" class="form-control" id="inp-email" placeholder="Enter Email" name="email"
+                <input type="text" class="form-control" id="inp-email" placeholder="vd: admin@gmail.com" name="email"
                     oninput="checkEmail()" required>
             </div>
 
@@ -19,7 +19,7 @@ function onloadForm() {
                 <label for="password"><b>Password</b></label>
                 <p style="color:rgb(0, 249, 0); opacity:0.7"> *Require a-z, A-Z, 0-9, and length 8-15</p>
                 <div id="notePassword"></div>
-                <input type="password" class="form-control" id="inp-password" placeholder="Enter Password"
+                <input type="password" class="form-control" id="inp-password" placeholder="vd: Admin@123"
                     name="password" required oninput="checkPassword()">
                 <i class="fa-solid fa-eye-slash" id="btn-password"></i>
             </div>
@@ -27,11 +27,14 @@ function onloadForm() {
             <div class="form-group">
                 <label for="confirmPassword"><b>Repeat Password</b></label>
                 <div id="noteConfirmPassword"></div>
-                <input type="password" id="inp-confirmPassword" class="form-control" placeholder="Confirm Password"
+                <input type="password" id="inp-confirmPassword" class="form-control" placeholder="vd: Admin@123"
                     name="confirmPassword" oninput="checkConfirmPassword()" required>
                 <i class="fa-solid fa-eye-slash" id="btn-confirmPassword"></i>
             </div>
             <button id="btn-submit" onclick="clickRegister()" class="mt-4 btn-css w-100">ĐĂNG KÝ</button>
+            <div class='text-center mt-3'>
+                <a href="loginForm.html" style='text-decoration: underline; color:rgb(0, 249, 0)'>Đã có tài khoản</a>
+            </div>
         </div>
     `
     document.getElementById("register-form").innerHTML = renderForm;

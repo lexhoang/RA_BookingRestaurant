@@ -6,7 +6,7 @@ function onloadForm() {
                     <a href="registerForm.html" class="btn btn-dark">SIGN UP</a>
                     <a href="loginForm.html" class="btn btn-danger">LOGIN</a>
                 </div>
-                <h3 class="text-center text-light mt-5">FORM LOGIN</h3>
+                <h3 class="text-center text-light mt-5">ĐĂNG NHẬP</h3>
                 <hr>
                 <div class="form-group">
                     <label for="email"><b>Email</b></label>
@@ -26,6 +26,9 @@ function onloadForm() {
                 <div class="text-center">
                     <div class="text-white mt-3 btn" data-bs-toggle="modal"
                         data-bs-target="#forgotPassword">Quên mật khẩu
+                    </div>
+                    <div class='mt-3'>
+                        <a href="registerForm.html" style='text-decoration: underline; color:rgb(0, 249, 0)'>Đăng ký tài khoản</a>
                     </div>
                 </div>
             </div>

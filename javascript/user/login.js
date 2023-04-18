@@ -104,31 +104,39 @@ function clickLogin() {
     let listUserLogin = JSON.parse(localStorage.getItem("userLogin"));
     let listUserRegister = JSON.parse(localStorage.getItem("listUserRegister"));
     //       KIỂM TRA XEM TÀI KHOẢN ĐÃ ĐƯƠC ĐĂNG KÝ CHƯA
-    for (let i = 0; i < listUserRegister.length; i++) {
-        if (listUserRegister[i].email !== inpEmail.value) {
-            swal("Tài khoản không tồn tại", "", "error");
-        }
-        else if (listUserRegister[i].password !== inpPassword.value) {
-            swal("Mật khẩu không đúng", "", "error");
-        }
-        else if (listUserRegister[i].status !== "Đang hoạt động") {
-            swal("Tài khoản này đã bị vô hiệu hóa", "", "error");
-        } else {
-            let objectUser = {
-                image: listUserRegister[i].image,
-                email: inpEmail.value,
-                password: inpPassword.value,
-                role: listUserRegister[i].role,
+    if (listUserRegister == null) {
+        swal("Tài khoản không tồn tại", "", "error");
+        return
+    } else {
+        for (let i = 0; i < listUserRegister.length; i++) {
+            if (listUserRegister[i].email !== inpEmail.value) {
+                swal("Tài khoản không tồn tại", "", "error");
+                return
             }
-            if (listUserLogin == null) {
-                listUserLogin = []
-                listUserLogin.push(objectUser)
-                localStorage.setItem("userLogin", JSON.stringify(listUserLogin));
-                window.location.href = "index.html";
+            else if (listUserRegister[i].password !== inpPassword.value) {
+                swal("Mật khẩu không đúng", "", "error");
+                return
+            }
+            else if (listUserRegister[i].status !== "Đang hoạt động") {
+                swal("Tài khoản này đã bị vô hiệu hóa", "", "error");
+                return
             } else {
-                listUserLogin.push(objectUser)
-                localStorage.setItem("userLogin", JSON.stringify(listUserLogin));
-                window.location.href = "index.html";
+                let objectUser = {
+                    image: listUserRegister[i].image,
+                    email: inpEmail.value,
+                    password: inpPassword.value,
+                    role: listUserRegister[i].role,
+                }
+                if (listUserLogin == null) {
+                    listUserLogin = []
+                    listUserLogin.push(objectUser)
+                    localStorage.setItem("userLogin", JSON.stringify(listUserLogin));
+                    window.location.href = "index.html";
+                } else {
+                    listUserLogin.push(objectUser)
+                    localStorage.setItem("userLogin", JSON.stringify(listUserLogin));
+                    window.location.href = "index.html";
+                }
             }
         }
     }

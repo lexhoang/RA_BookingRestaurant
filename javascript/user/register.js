@@ -12,7 +12,7 @@ function onloadForm() {
                 <label for="email"><b>Email</b></label>
                 <div id="noteEmail"></div>
                 <input type="text" class="form-control" id="inp-email" placeholder="vd: admin@gmail.com" name="email"
-                    oninput="checkEmail()" required>
+                    onchange="checkEmail()" required>
             </div>
 
             <div class="form-group mt-4">
@@ -20,7 +20,7 @@ function onloadForm() {
                 <p style="color:rgb(0, 249, 0); opacity:0.7"> *Require a-z, A-Z, 0-9, and length 8-15</p>
                 <div id="notePassword"></div>
                 <input type="password" class="form-control" id="inp-password" placeholder="vd: Admin@123"
-                    name="password" required oninput="checkPassword()">
+                    name="password" required onchange="checkPassword()">
                 <i class="fa-solid fa-eye-slash" id="btn-password"></i>
             </div>
 
@@ -28,7 +28,7 @@ function onloadForm() {
                 <label for="confirmPassword"><b>Repeat Password</b></label>
                 <div id="noteConfirmPassword"></div>
                 <input type="password" id="inp-confirmPassword" class="form-control" placeholder="vd: Admin@123"
-                    name="confirmPassword" oninput="checkConfirmPassword()" required>
+                    name="confirmPassword" onchange="checkConfirmPassword()" required>
                 <i class="fa-solid fa-eye-slash" id="btn-confirmPassword"></i>
             </div>
             <button id="btn-submit" onclick="clickRegister()" class="mt-4 btn-css w-100">ĐĂNG KÝ</button>
@@ -115,6 +115,7 @@ function checkForm() {
     if (checkEmail() == true && checkPassword() == true && checkConfirmPassword() == true) {
         return true;
     } else {
+        swal("Tạo tài khoản thất bại", "Đăng ký tài khoản không thành công, hãy kiểm tra lại thông tin của bạn.", "error");
         return false;
     }
 }
